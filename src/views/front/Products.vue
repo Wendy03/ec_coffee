@@ -1,0 +1,163 @@
+<template>
+  <div>
+    <loading :active.sync="isLoading"></loading>
+    <div class="container-fluid"
+         style="min-height:100vh;">
+      <div class="row mt-5"
+           v-if="products.length > 0">
+        <div class="col-md-2 mb-2 my-5">
+          <ul class="list-group sticky-top">
+            <a href="#"
+               class="list-group-item list-group-item-action"
+               @click.prevent="filterCategory = ''"
+               :class="{ active: filterCategory === '' }">
+              全部商品
+            </a>
+            <a class="list-group-item list-group-item-action"
+               href="#"
+               @click.prevent="filterCategory = item"
+               :class="{ active: item === filterCategory }"
+               v-for="item in categories"
+               :key="item">
+              {{ item }}
+            </a>
+          </ul>
+        </div>
+        <div class="col-md-9 my-5">
+          <div class="row">
+            <div class="col-md-4 col-sm-6 mb-3 mb-4"
+                 v-for="item in filterCategories"
+                 :key="item.id">
+              <div class="card border-0 shadow-sm h-100">
+                <div style="
+                    height: 180px;
+                    background-size: cover;
+                    background-position: center;
+                  "
+                     :style="{ backgroundImage: `url(${item.imageUrl[0]})` }">
+                </div>
+                <div class="card-body">
+                  <span class="badge badge-secondary float-right ml-2">
+                    {{ item.category }}
+                  </span>
+                  <h5 class="card-title">
+                    {{ item.title }}
+                  </h5>
+                  <p class="card-text">{{ item.content }}</p>
+                  <div class="text-right pr-2">
+                    {{ item.price | money}} 元
+                  </div>
+                </div>
+                <div class="card-footer d-flex">
+                  <router-link :to="`/product/${item.id}`"
+                               class="btn btn-outline-secondary btn-sm">
+                    查看更多
+                  </router-link>
+                  <button type="button"
+                          class="btn btn-outline-danger btn-sm ml-auto"
+                          @click.prevent="addToCart(item.id)">
+                    <i class="fas fa-spinner fa-spin"
+                       v-if="status.loadingItem === item.id">
+                    </i>
+                    加到購物車
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ToTop />
+    </div>
+  </div>
+</template>
+
+<script>
+import Toast from '../../utils/Toast';
+import ToTop from '../../components/ToTop.vue';
+
+export default {
+  data() {
+    return {
+      isLoading: false,
+      status: {
+        loadingItem: '',
+      },
+      products: [],
+      carts: [],
+      categories: ['中焙咖啡豆', '淺焙咖啡豆', '周邊商品'],
+      filterCategory: '',
+    };
+  },
+  components: {
+    ToTop,
+  },
+  created() {
+    this.getProducts();
+  },
+  methods: {
+    getProducts() {
+      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/products`;
+      this.isLoading = true;
+      this.$http
+        .get(url)
+        .then((res) => {
+          this.isLoading = false;
+          this.products = res.data.data;
+          const { categoryName } = this.$route.params;
+          if (categoryName) {
+            this.filterCategory = categoryName;
+          }
+        })
+        .catch(() => {
+          this.isLoading = false;
+          Toast.fire({
+            title: '無法取得資料，稍後再試',
+            icon: 'error',
+          });
+        });
+    },
+    addToCart(id, quantity = 1) {
+      this.status.loadingItem = id;
+      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`;
+      const cart = {
+        product: id,
+        quantity,
+      };
+      this.$http
+        .post(url, cart)
+        .then(() => {
+          this.status.loadingItem = '';
+          this.$bus.$emit('update-total');
+          Toast.fire({
+            title: '已加入購物車',
+            icon: 'success',
+          });
+        })
+        .catch((err) => {
+          this.status.loadingItem = '';
+          const errorData = err.response.data.errors;
+          if (errorData) {
+            Toast.fire({
+              title: `${errorData}`,
+              icon: 'warning',
+            });
+          }
+        });
+    },
+  },
+  computed: {
+    filterCategories() {
+      if (this.filterCategory) {
+        return this.products.filter((item) => {
+          const data = item.category
+            .toLowerCase()
+            .includes(this.filterCategory.toLowerCase());
+          return data;
+        });
+      }
+      return this.products;
+    },
+  },
+};
+</script>
