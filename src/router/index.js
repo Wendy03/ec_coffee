@@ -1,26 +1,87 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    component: () => import('../views/Layout.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('../views/front/Home.vue'),
+      },
+      {
+        path: 'about',
+        name: 'about',
+        component: () => import('../views/front/About.vue'),
+      },
+      {
+        path: 'products',
+        name: 'products',
+        component: () => import('../views/front/Products.vue'),
+      },
+      {
+        path: 'product/:id',
+        name: 'product',
+        component: () => import('../views/front/Product.vue'),
+      },
+      {
+        path: 'cart',
+        name: 'cart',
+        component: () => import('../views/front/Cart.vue'),
+      },
+      {
+        path: '/order',
+        name: 'order',
+        component: () => import('../views/front/Order.vue'),
+      },
+      {
+        path: '/checkout/:orderId',
+        name: 'checkout',
+        component: () => import('../views/front/Checkout.vue'),
+      },
+    ],
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    path: '/signin',
+    component: () => import('../views/Signin.vue'),
+  },
+  {
+    path: '/admin',
+    component: () => import('../views/Dashboard.vue'),
+    children: [
+      {
+        path: 'products',
+        component: () => import('../views/backend/Products.vue'),
+      },
+      {
+        path: 'orders',
+        component: () => import('../views/backend/Orders.vue'),
+      },
+      {
+        path: 'coupons',
+        component: () => import('../views/backend/Coupons.vue'),
+      },
+      {
+        path: 'storages',
+        component: () => import('../views/backend/Storages.vue'),
+      },
+    ],
+  },
+  {
+    path: '*',
+    name: 'not-found',
+    component: () => import('../views/NotFound.vue'),
   },
 ];
 
 const router = new VueRouter({
+  linkExactActiveClass: 'active',
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  },
   routes,
 });
 
