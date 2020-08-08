@@ -1,12 +1,12 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="conatiner mx-5 my-5"
-         style="min-height:100vh; padding-top: 70px;">
+    <div class="conatiner-fluid m-5"
+         style="padding-top: 70px;">
       <div class="d-flex justify-content-center"
            v-if="carts.length > 0">
-        <div class="bg-white"
-             style="height: 100vh;">
+        <div class="bg-white mb-5"
+             style="min-height: calc(100vh - 70px);">
           <div class="d-flex justify-content-between mb-5">
             <h2 class="mt-2">Cart Detail</h2>
             <a href="#"

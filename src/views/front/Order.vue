@@ -142,7 +142,7 @@
           </div>
 
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mb-5">
           <div class="border p-4 mb-4">
             <h4 class="mb-4">Order Detail</h4>
             <div v-for="item in carts"
