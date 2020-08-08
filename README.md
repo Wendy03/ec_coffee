@@ -1,24 +1,66 @@
-# ec_coffee
+# 咖啡豆電商平台
 
-## Project setup
-```
-npm install
-```
+## Demo: https://wendy03.github.io/ec_coffee/#/
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Installing
 
-### Compiles and minifies for production
-```
-npm run build
-```
+#### 環境
 
-### Lints and fixes files
-```
-npm run lint
-```
+1.  
+  > - Vue: @vue/cli 4.4.1
+  > - Node: v10.15.0
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+2.  專案套件
+  > - bcryptjs: "^2.4.3",
+  > - axios: "^0.19.2",
+  > - bootstrap: "^4.5.0",
+  > - core-js: "^3.6.5",
+  > - jquery: "^3.5.1",
+  > - popper.js: "^1.16.1",
+  > - sweetalert2: "^9.17.1",
+  > - vee-validate: "^3.3.7",
+  > - vue: "^2.6.11",
+  > - vue-axios: "^2.1.5",
+  > - vue-loading-overlay: "^3.3.2",
+  > - vue-router: "^3.2.0",
+  > - vue2-editor : "^2.10.2"
+
+3. 安裝步驟
+  > - 開啟終端機到存放專案本機位置並執行：
+
+  > - git clone https://github.com/Wendy03/ec_coffee.git
+
+  > - 專案套件安裝：
+
+  > >  1. 使用終端機切換目錄到專案： ec_coffee
+  > >  2. 使用終端機安裝套件： npm install
+
+  > - 專案的「根目錄」新增 .env 這個檔案，參考 env example
+
+## 主要功能
+
+#### 消費者
+##### 1.可以瀏覽全部商品
+##### 2.點選查看更多查看單一商品詳細資料
+##### 3.輸入E-mail訂閱平台獲取最新資訊
+##### 4.點選加到購物車可將商品加入購物車內
+##### 5.點選購物車圖案可瀏覽購物車內商品
+##### 6.點選確認訂單填寫購買人資訊
+##### 7.可輸入優惠卷代碼
+##### 8.填寫表單送出訂單，送出表單後連結到付款頁面
+##### 9.付款頁面點選付款確認完成訂單
+
+#### 管理者
+##### 1.填寫E-mail、Password登入管理頁面
+##### 2.瀏覽全部商品清單
+##### 3.新增新商品
+##### 4.商除單一產品
+##### 5.編輯商品資訊
+##### 6.瀏覽全部訂單資訊
+##### 7.瀏覽全部優惠卷資訊
+##### 8.刪除單一優惠卷
+##### 9.新增優惠卷
+##### 10.編輯優惠卷
+##### 11.刪除單一優惠卷
+##### 9.瀏覽全部上傳圖片
+##### 10.刪除圖片
