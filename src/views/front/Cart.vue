@@ -1,12 +1,11 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="conatiner-fluid m-5"
-         style="padding-top: 70px;">
+    <div class="conatiner-fluid my-5">
       <div class="d-flex justify-content-center"
            v-if="carts.length > 0">
-        <div class="bg-white mb-5"
-             style="min-height: calc(100vh - 70px);">
+        <div class="col-md-6 bg-white py-5"
+             style="min-height: calc(100vh - 56px - 76px);">
           <div class="d-flex justify-content-between mb-5">
             <h2 class="mt-2">Cart Detail</h2>
             <a href="#"
@@ -77,11 +76,11 @@
 
           </div>
           <div class="d-flex flex-column-reverse
-                flex-md-row mt-4 justify-content-between
+                flex-md-row flex-sm-row mt-4 justify-content-between
                 align-items-md-center align-items-end w-100">
             <router-link to="/products"
-                         class="text-dark mt-5 mt-3">
-              <i class="fas fa-chevron-left mr-2"></i>
+                         class="text-dark mt-5">
+              <i class="fas fa-chevron-left mr-1"></i>
               繼續購物
             </router-link>
             <router-link to="/order"

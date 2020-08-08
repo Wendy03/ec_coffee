@@ -1,8 +1,8 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="conatiner m-5"
-         style="min-height:100vh; padding-top: 70px;"
+    <div class="conatiner-fluid my-5"
+         style="padding-top: 70px;"
          v-if="carts.length > 0">
       <div class="row justify-content-center flex-md-row flex-column-reverse">
         <div class="col-md-6">
@@ -143,7 +143,7 @@
 
         </div>
         <div class="col-md-4 mb-5">
-          <div class="border p-4 mb-4">
+          <div class="border p-5 mx-2 mb-4">
             <h4 class="mb-4">Order Detail</h4>
             <div v-for="item in carts"
                  :key="item.product.id + 1">

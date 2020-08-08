@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="conatiner m-5"
+    <div class="conatiner my-5 px-4"
          style="min-height:100vh; padding-top: 70px;">
       <div class="my-5">
         <div class="row">
@@ -13,7 +13,7 @@
               <p class="ml-2">訂單完成預計1~2天出貨</p>
               <div style="
                     height: 300px;
-                    width: 500px
+                    width: 450px
                     background-size: cover;
                     background-position: center;
                     backgroundImage: url('https://images.unsplash.com/photo-1495774856032-8b90bbb32b32?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80')">
@@ -32,7 +32,7 @@
               大約 1 ~ 2天出貨
             </p>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 mt-3">
             <div class="card rounded-0 py-4 mb-2">
               <div class="card-header border-bottom-0 bg-white px-4 py-0">
                 <h2>Order Detail</h2>
