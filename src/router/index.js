@@ -33,12 +33,17 @@ const routes = [
         component: () => import('../views/frontend/Cart.vue'),
       },
       {
-        path: '/order',
+        path: 'class',
+        name: 'class',
+        component: () => import('../views/frontend/Class.vue'),
+      },
+      {
+        path: 'order',
         name: 'order',
         component: () => import('../views/frontend/Order.vue'),
       },
       {
-        path: '/checkout/:orderId',
+        path: 'checkout/:orderId',
         name: 'checkout',
         component: () => import('../views/frontend/Checkout.vue'),
       },

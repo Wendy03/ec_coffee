@@ -28,6 +28,12 @@
             商品列表
           </router-link>
         </li>
+        <li class="nav-item">
+          <router-link to="/class"
+                       class="nav-link text-light">
+            咖啡小教室
+          </router-link>
+        </li>
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item">
