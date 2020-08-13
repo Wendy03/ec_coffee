@@ -96,7 +96,7 @@
 
 <script>
 import $ from 'jquery';
-import Toast from '../../utils/Toast';
+import Toast from '@/utils/Toast';
 
 export default {
   data() {
@@ -129,18 +129,18 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          this.status.loadingItem = '';
           this.tempCoupon = res.data.data;
           $('#couponModal').modal('show');
           const dedlineAt = this.tempCoupon.deadline.datetime.split(' ');
           [this.due_date, this.due_time] = dedlineAt;
+          this.status.loadingItem = '';
         })
         .catch(() => {
-          this.status.loadingItem = '';
           Toast.fire({
             title: '無法取得資料，稍後再試',
             icon: 'error',
           });
+          this.status.loadingItem = '';
         });
     },
     updateCoupon() {
@@ -156,7 +156,6 @@ export default {
       this.tempCoupon.deadline_at = `${this.due_date} ${this.due_time}`;
       this.$http[httpMethod](url, this.tempCoupon)
         .then(() => {
-          this.isProcessing = false;
           $('#couponModal').modal('hide');
           this.$emit('update');
           this.due_date = '';
@@ -165,14 +164,15 @@ export default {
             title: `優惠卷${message}成功`,
             icon: 'success',
           });
+          this.isProcessing = false;
         })
         .catch(() => {
-          this.isProcessing = false;
           $('#couponModal').modal('hide');
           Toast.fire({
             title: `優惠卷${message}失敗，稍後在試`,
             icon: 'error',
           });
+          this.isProcessing = false;
         });
     },
   },

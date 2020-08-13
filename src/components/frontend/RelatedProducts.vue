@@ -11,7 +11,7 @@
                     background-position: center;
                     cursor: pointer
                   "
-               :style="{ backgroundImage: `url(${item.imageUrl[0]})` }"
+               :style="{ backgroundImage: `url(${ item.imageUrl[0] })` }"
                @click.prevent="getDetail(item.id)">
           </div>
           <div class="card-body">
@@ -20,7 +20,7 @@
             </h5>
             <p class="card-text">{{ item.content }}</p>
             <div class="text-right pr-2">
-              {{ item.price | money}} 元
+              {{ item.price | money }} 元
             </div>
           </div>
         </div>
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import Toast from '../../utils/Toast';
+import Toast from '@/utils/Toast';
 
 export default {
   data() {

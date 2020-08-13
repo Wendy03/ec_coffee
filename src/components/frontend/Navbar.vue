@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-brown fixed-top">
     <router-link class="navbar-brand"
                  to="/">
       Coffee
@@ -17,12 +17,6 @@
          id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link to="/"
-                       class="nav-link text-light mr-2">
-            Home
-          </router-link>
-        </li>
-        <li class="nav-item">
           <router-link to="/about"
                        class="nav-link text-light mr-2">
             關於我們
@@ -39,7 +33,7 @@
         <li class="nav-item">
           <router-link to="/cart"
                        class="nav-link text-light mr-3">
-            <CartIcon/>
+            <CartIcon />
           </router-link>
         </li>
       </ul>
@@ -51,6 +45,9 @@
 import CartIcon from './CartIcon.vue';
 
 export default {
+  data() {
+    return {};
+  },
   components: {
     CartIcon,
   },

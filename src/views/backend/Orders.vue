@@ -17,17 +17,16 @@
         <tbody>
           <tr v-for="item in sortOrder"
               :key="item.id">
-            <td>{{ item.created.timestamp | date}}</td>
+            <td>{{ item.created.datetime }}</td>
             <td>
               <ul class="list-unstyled">
                 <li v-for="(product, i) in item.products"
                     :key="i">
-                  {{ product.product.title }} 數量：{{ product.quantity
-                          }} {{ product.product.unit }}
+                  {{ product.product.title }} 數量：{{ product.quantity }} {{ product.product.unit }}
                 </li>
               </ul>
             </td>
-            <td class="text-center">{{ item.amount | money}}</td>
+            <td class="text-center">{{ item.amount | money }}</td>
             <td class="text-center">{{ item.payment}}</td>
             <td>
               <div class="custom-control custom-switch">
@@ -67,9 +66,9 @@
 </template>
 
 <script>
-import Toast from '../../utils/Toast';
-import Pagination from '../../components/Pagination.vue';
-import OrderModal from '../../components/dashboard/OrderModal.vue';
+import Toast from '@/utils/Toast';
+import Pagination from '@/components/Pagination.vue';
+import OrderModal from '@/components/backend/OrderModal.vue';
 
 export default {
   data() {
@@ -99,16 +98,16 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          this.isLoading = false;
           this.orders = res.data.data;
           this.pagination = res.data.meta.pagination;
+          this.isLoading = false;
         })
         .catch(() => {
-          this.isLoading = false;
           Toast.fire({
             title: '無法取得資料，稍後再試',
             icon: 'error',
           });
+          this.isLoading = false;
         });
     },
     updatePayment(item) {
@@ -120,19 +119,19 @@ export default {
       this.$http
         .patch(url, item.id)
         .then(() => {
-          this.isLoading = false;
           Toast.fire({
             title: '付款狀態修改成功',
             icon: 'success',
           });
           this.getOrders();
+          this.isLoading = false;
         })
         .catch(() => {
-          this.isLoading = false;
           Toast.fire({
             title: '付款失敗',
             icon: 'error',
           });
+          this.isLoading = false;
         });
     },
     openModal(item) {

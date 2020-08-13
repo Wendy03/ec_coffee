@@ -35,6 +35,9 @@
 
 <script>
 export default {
+  data() {
+    return {};
+  },
   props: {
     pages: {
       type: Object,

@@ -36,18 +36,12 @@
         </validation-provider>
       </div>
     </div>
-    <div class="mt-7 mb-0">
-      <router-link to="/products"
-                   class="float-right btn btn-light mr-1">
-        <strong>查看商品</strong>
-      </router-link>
-    </div>
   </div>
 </template>
 
 <script>
 import Swal from 'sweetalert2';
-import Toast from '../../utils/Toast';
+import Toast from '@/utils/Toast';
 
 export default {
   data() {

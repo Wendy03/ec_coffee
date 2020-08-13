@@ -30,8 +30,8 @@
               :key="item.id">
             <td>{{ item.category }}</td>
             <td>{{ item.title }}</td>
-            <td>{{ item.origin_price | money}}</td>
-            <td>{{ item.price | money}}</td>
+            <td>{{ item.origin_price | money }}</td>
+            <td>{{ item.price | money }}</td>
             <td>
               <span v-if="item.enabled"
                     class="text-success">啟用</span>
@@ -69,10 +69,10 @@
 
 <script>
 import $ from 'jquery';
-import Toast from '../../utils/Toast';
-import ProductModal from '../../components/dashboard/ProductModal.vue';
-import DelModal from '../../components/dashboard/DelProductModal.vue';
-import Pagination from '../../components/Pagination.vue';
+import Toast from '@/utils/Toast';
+import ProductModal from '@/components/backend/ProductModal.vue';
+import DelModal from '@/components/backend/DelProductModal.vue';
+import Pagination from '@/components/Pagination.vue';
 
 export default {
   data() {
@@ -104,16 +104,16 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          this.isLoading = false;
           this.products = res.data.data;
           this.pagination = res.data.meta.pagination;
+          this.isLoading = false;
         })
         .catch(() => {
-          this.isLoading = false;
           Toast.fire({
             title: '無法取得資料，稍後再試',
             icon: 'error',
           });
+          this.isLoading = false;
         });
     },
     openModal(type, item) {
@@ -121,12 +121,12 @@ export default {
         this.$refs.productModal.tempProduct = {
           imageUrl: [],
         };
-        $('#productModal').modal('show');
         this.isNew = true;
+        $('#productModal').modal('show');
       } else if (type === 'edit') {
+        this.isNew = false;
         this.$refs.productModal.getProduct(item.id);
         this.status.loadingItem = item.id;
-        this.isNew = false;
       } else if (type === 'del') {
         this.tempProduct = { ...item };
         $('#delProductModal').modal('show');

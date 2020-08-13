@@ -26,35 +26,35 @@
                 <th scope="row"
                     class="font-weight-normal">Email</th>
                 <td>
-                  {{order.user.email}}
+                  {{ order.user.email }}
                 </td>
               </tr>
               <tr>
                 <th scope="row"
                     class="font-weight-normal">收貨人姓名</th>
                 <td>
-                  {{order.user.name}}
+                  {{ order.user.name }}
                 </td>
               </tr>
               <tr>
                 <th scope="row"
                     class="font-weight-normal">收貨人電話</th>
                 <td>
-                  {{order.user.tel}}
+                  {{ order.user.tel }}
                 </td>
               </tr>
               <tr>
                 <th scope="row"
                     class="font-weight-normal">收貨人地址</th>
                 <td>
-                  {{order.user.address}}
+                  {{ order.user.address }}
                 </td>
               </tr>
               <tr>
                 <th scope="row"
                     class="font-weight-normal">留言</th>
                 <td>
-                  {{order.message}}
+                  {{ order.message }}
                 </td>
               </tr>
             </tbody>
@@ -67,7 +67,7 @@
 
 <script>
 import $ from 'jquery';
-import Toast from '../../utils/Toast';
+import Toast from '@/utils/Toast';
 
 export default {
   data() {
@@ -91,15 +91,15 @@ export default {
         .get(url)
         .then((res) => {
           this.order = res.data.data;
-          this.status.loadingItem = '';
           $('#orderModal').modal('show');
+          this.status.loadingItem = '';
         })
         .catch(() => {
-          this.status.loadingItem = '';
           Toast.fire({
             title: '無法取得資料，稍後再試',
             icon: 'error',
           });
+          this.status.loadingItem = '';
         });
     },
   },

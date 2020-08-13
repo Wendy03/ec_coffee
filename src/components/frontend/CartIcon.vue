@@ -4,7 +4,7 @@
        style="font-size: 1.4rem"
        aria-hidden="true"></i>
     <span class="badge badge-pill badge-danger">
-      {{ cartTotal}}
+      {{ cartTotal }}
     </span>
   </div>
 </template>
@@ -29,9 +29,6 @@ export default {
         .get(url)
         .then((res) => {
           this.cartTotal = res.data.data.length;
-        })
-        .catch(() => {
-          this.isLoading = false;
         });
     },
   },

@@ -66,9 +66,9 @@
 
 <script>
 import $ from 'jquery';
-import Pagination from '../../components/Pagination.vue';
-import CouponModal from '../../components/dashboard/CouponModal.vue';
-import DelCouponModal from '../../components/dashboard/DelCouponModal.vue';
+import Pagination from '@/components/Pagination.vue';
+import CouponModal from '@/components/backend/CouponModal.vue';
+import DelCouponModal from '@/components/backend/DelCouponModal.vue';
 
 export default {
   data() {
@@ -102,23 +102,23 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupons?page=${page}`;
       this.isLoading = true;
       this.$http.get(url).then((res) => {
-        this.isLoading = false;
         this.coupons = res.data.data;
         this.pagination = res.data.meta.pagination;
+        this.isLoading = false;
       });
     },
     openModal(type, item) {
       if (type === 'new') {
-        $('#couponModal').modal('show');
         this.$refs.couponModal.tempCoupon = {};
         this.isNew = true;
+        $('#couponModal').modal('show');
       } else if (type === 'edit') {
-        this.$refs.couponModal.getCoupon(item.id);
         this.isNew = false;
+        this.$refs.couponModal.getCoupon(item.id);
         this.status.loadingItem = item.id;
       } else if (type === 'del') {
-        $('#delCouponModal').modal('show');
         this.tempCoupon = { ...item };
+        $('#delCouponModal').modal('show');
       }
     },
   },

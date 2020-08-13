@@ -28,14 +28,17 @@
             <div class="col-md-4 col-sm-6 mb-3 mb-4"
                  v-for="item in filterCategories"
                  :key="item.id">
-              <div class="card border-0 shadow-sm h-100">
-                <div style="
+              <div class="card h-100">
+                <router-link :to="`/product/${ item.id }`">
+                  <div style="
                     height: 180px;
                     background-size: cover;
                     background-position: center;
                   "
-                     :style="{ backgroundImage: `url(${item.imageUrl[0]})` }">
-                </div>
+                       class="card-img"
+                       :style="{ backgroundImage: `url(${ item.imageUrl[0] })` }">
+                  </div>
+                </router-link>
                 <div class="card-body">
                   <span class="badge badge-secondary float-right ml-2">
                     {{ item.category }}
@@ -45,17 +48,15 @@
                   </h5>
                   <p class="card-text">{{ item.content }}</p>
                   <div class="text-right pr-2">
-                    {{ item.price | money}} 元
+                    {{ item.price | money }} 元
                   </div>
                 </div>
-                <div class="card-footer d-flex">
-                  <router-link :to="`/product/${item.id}`"
-                               class="btn btn-outline-secondary btn-sm">
-                    查看更多
-                  </router-link>
+                <div class="card-footer d-flex border-top-0">
                   <button type="button"
-                          class="btn btn-outline-danger btn-sm ml-auto"
+                          class="btn btn-outline-brown btn-block"
                           @click.prevent="addToCart(item.id)">
+                    <i class="fa fa-cart-plus"
+                       aria-hidden="true"></i>
                     <i class="fas fa-spinner fa-spin"
                        v-if="status.loadingItem === item.id">
                     </i>
@@ -73,8 +74,8 @@
 </template>
 
 <script>
-import Toast from '../../utils/Toast';
-import ToTop from '../../components/ToTop.vue';
+import Toast from '@/utils/Toast';
+import ToTop from '@/components/ToTop.vue';
 
 export default {
   data() {
@@ -102,19 +103,19 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          this.isLoading = false;
           this.products = res.data.data;
           const { categoryName } = this.$route.params;
           if (categoryName) {
             this.filterCategory = categoryName;
           }
+          this.isLoading = false;
         })
         .catch(() => {
-          this.isLoading = false;
           Toast.fire({
             title: '無法取得資料，稍後再試',
             icon: 'error',
           });
+          this.isLoading = false;
         });
     },
     addToCart(id, quantity = 1) {
@@ -127,15 +128,14 @@ export default {
       this.$http
         .post(url, cart)
         .then(() => {
-          this.status.loadingItem = '';
           this.$bus.$emit('update-total');
           Toast.fire({
             title: '已加入購物車',
             icon: 'success',
           });
+          this.status.loadingItem = '';
         })
         .catch((err) => {
-          this.status.loadingItem = '';
           const errorData = err.response.data.errors;
           if (errorData) {
             Toast.fire({
@@ -143,6 +143,7 @@ export default {
               icon: 'warning',
             });
           }
+          this.status.loadingItem = '';
         });
     },
   },
@@ -161,3 +162,21 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .list-group {
+    top: 80px;
+  }
+
+  .list-group-item.active {
+    background-color: #6b5139;
+  }
+
+  .card {
+    box-shadow: 2px 2px 5px rgb(100, 100, 100);
+  }
+
+  .card-footer {
+    border-top-style: none;
+  }
+</style>

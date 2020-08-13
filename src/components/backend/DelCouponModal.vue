@@ -1,6 +1,6 @@
 <template>
   <div class="modal fade"
-       id="delProductModal"
+       id="delCouponModal"
        tabindex="-1"
        role="dialog"
        aria-labelledby="exampleModalLabel"
@@ -11,7 +11,7 @@
         <div class="modal-header bg-danger text-white">
           <h5 class="modal-title"
               id="exampleModalLabel">
-            <span>刪除產品</span>
+            <span>刪除優惠卷</span>
           </h5>
           <button type="button"
                   class="close"
@@ -22,8 +22,8 @@
         </div>
         <div class="modal-body">
           是否刪除
-          <strong class="text-danger">{{ tempProduct.title }}</strong>
-          商品(刪除後將無法恢復)。
+          <strong class="text-danger">{{ tempCoupon.title }}</strong>
+          (刪除後將無法恢復)。
         </div>
         <div class="modal-footer">
           <button type="button"
@@ -33,7 +33,7 @@
           </button>
           <button type="button"
                   class="btn btn-danger"
-                  @click.prevent="delProduct"
+                  @click.prevent="delCoupon"
                   :disabled="isProcessing">
             確認刪除
           </button>
@@ -45,7 +45,7 @@
 
 <script>
 import $ from 'jquery';
-import Toast from '../../utils/Toast';
+import Toast from '@/utils/Toast';
 
 export default {
   data() {
@@ -54,31 +54,33 @@ export default {
     };
   },
   props: {
-    tempProduct: {
+    tempCoupon: {
       type: Object,
       required: true,
     },
   },
   methods: {
-    delProduct() {
-      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product/${this.tempProduct.id}`;
+    delCoupon() {
+      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon/${this.tempCoupon.id}`;
       this.isProcessing = true;
-      this.$http.delete(url)
+      this.$http
+        .delete(url)
         .then(() => {
-          this.isProcessing = false;
-          $('#delProductModal').modal('hide');
+          $('#delCouponModal').modal('hide');
           this.$emit('update');
           Toast.fire({
-            title: '刪除成功',
+            title: '優惠卷刪除成功',
             icon: 'success',
           });
+          this.isProcessing = false;
         })
         .catch(() => {
-          this.isProcessing = false;
+          $('#delCouponModal').modal('hide');
           Toast.fire({
-            title: '刪除失敗',
+            title: '優惠卷刪除失敗，稍後在試',
             icon: 'error',
           });
+          this.isProcessing = false;
         });
     },
   },

@@ -20,7 +20,7 @@
                     background-size: cover;
                     background-position: center;
                   "
-                   :style="{ backgroundImage: `url(${item.path})` }">
+                   :style="{ backgroundImage: `url(${ item.path })` }">
               </div>
             </td>
             <td>
@@ -44,9 +44,9 @@
 
 <script>
 import $ from 'jquery';
-import Toast from '../../utils/Toast';
-import DelFileModal from '../../components/dashboard/DelFileModal.vue';
-import Pagination from '../../components/Pagination.vue';
+import Toast from '@/utils/Toast';
+import DelFileModal from '@/components/backend/DelFileModal.vue';
+import Pagination from '@/components/Pagination.vue';
 
 export default {
   data() {
@@ -71,9 +71,9 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          this.isLoading = false;
           this.storages = res.data.data;
           this.pagination = res.data.meta.pagination;
+          this.isLoading = false;
         })
         .catch(() => {
           this.isLoading = false;
@@ -84,8 +84,8 @@ export default {
         });
     },
     openModal(item) {
-      $('#delFileModal').modal('show');
       this.tempStorage = { ...item };
+      $('#delFileModal').modal('show');
     },
   },
 };

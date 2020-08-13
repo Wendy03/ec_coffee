@@ -13,7 +13,6 @@ import zhTW from 'vee-validate/dist/locale/zh_TW.json'; // 語系檔案
 import './bus';
 import App from './App.vue';
 import router from './router';
-import dateFilter from './filters/date';
 import moneyFilter from './filters/money';
 
 Vue.config.productionTip = false;
@@ -33,7 +32,6 @@ Vue.component('ValidationProvider', ValidationProvider);
 
 Vue.component('Loading', Loading);
 
-Vue.filter('date', dateFilter);
 Vue.filter('money', moneyFilter);
 
 new Vue({

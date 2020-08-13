@@ -10,37 +10,37 @@ const routes = [
     children: [
       {
         path: '',
-        component: () => import('../views/front/Home.vue'),
+        component: () => import('../views/frontend/Home.vue'),
       },
       {
         path: 'about',
         name: 'about',
-        component: () => import('../views/front/About.vue'),
+        component: () => import('../views/frontend/About.vue'),
       },
       {
         path: 'products',
         name: 'products',
-        component: () => import('../views/front/Products.vue'),
+        component: () => import('../views/frontend/Products.vue'),
       },
       {
         path: 'product/:id',
         name: 'product',
-        component: () => import('../views/front/Product.vue'),
+        component: () => import('../views/frontend/Product.vue'),
       },
       {
         path: 'cart',
         name: 'cart',
-        component: () => import('../views/front/Cart.vue'),
+        component: () => import('../views/frontend/Cart.vue'),
       },
       {
         path: '/order',
         name: 'order',
-        component: () => import('../views/front/Order.vue'),
+        component: () => import('../views/frontend/Order.vue'),
       },
       {
         path: '/checkout/:orderId',
         name: 'checkout',
-        component: () => import('../views/front/Checkout.vue'),
+        component: () => import('../views/frontend/Checkout.vue'),
       },
     ],
   },

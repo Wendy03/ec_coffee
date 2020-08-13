@@ -6,3 +6,11 @@
     <router-link to="/signin">回到首頁</router-link>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {};
+  },
+};
+</script>

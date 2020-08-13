@@ -1,8 +1,8 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark flex-md-nowrap shadow">
+    <nav class="navbar navbar-expand-lg navbar-peru fixed-top bg-dark flex-md-nowrap shadow">
       <router-link to="/admin/products"
-                   class="navbar-brand">
+                   class="navbar-brand text-light">
         Coffee
       </router-link>
       <button class="navbar-toggler"
@@ -41,6 +41,9 @@
 
 <script>
 export default {
+  data() {
+    return {};
+  },
   methods: {
     signout() {
       document.cookie = 'hexToken=; expires=; path=/';

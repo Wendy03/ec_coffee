@@ -7,7 +7,7 @@
       <div class="row justify-content-center flex-md-row flex-column-reverse">
         <div class="col-md-6">
           <div class="bg-white p-4">
-            <h3 class="font-weight-bold">Contact Form</h3>
+            <h3 class="font-weight-bold">客戶資訊</h3>
             <validation-observer v-slot="{ invalid }"
                                  class="col-md-6">
               <form @submit.prevent="createOrder">
@@ -129,7 +129,7 @@
                     <i class="fas fa-chevron-left mr-2"></i>
                     回到購物車
                   </router-link>
-                  <button class="btn btn-dark float-right"
+                  <button class="btn btn-brown float-right"
                           :disabled="invalid">
                     <i class="fas fa-spinner fa-spin"
                        v-if="isProcessing">
@@ -144,7 +144,7 @@
         </div>
         <div class="col-md-4 mb-5">
           <div class="border p-5 mx-2 mb-4">
-            <h4 class="mb-4">Order Detail</h4>
+            <h4 class="mb-4">訂單明細</h4>
             <div v-for="item in carts"
                  :key="item.product.id + 1">
               <div class="d-flex mb-2">
@@ -155,11 +155,11 @@
                 <div class="w-100">
                   <div class="d-flex justify-content-between font-weight-bold">
                     <p class="mb-0">{{ item.product.title }}</p>
-                    <p class="mb-0">x{{item.quantity}}</p>
+                    <p class="mb-0">x{{ item.quantity }}</p>
                   </div>
                   <div class="d-flex justify-content-between">
                     <small class="mb-0 text-muted">
-                      {{ item.product.price | money}} / {{ item.product.unit}}
+                      {{ item.product.price | money }} / {{ item.product.unit }}
                     </small>
                   </div>
                 </div>
@@ -171,7 +171,7 @@
                   <th scope="row"
                       class="border-0 px-0 pt-4 font-weight-normal">Subtotal</th>
                   <td class="text-right border-0 px-0 pt-4">
-                    {{ cartTotal | money}}
+                    {{ cartTotal | money }}
                   </td>
                 </tr>
                 <tr>
@@ -185,7 +185,8 @@
                       <div class="input-group-append">
                         <button class="btn btn-outline-secondary"
                                 type="button"
-                                @click.prevent="addCouponCode">
+                                @click.prevent="addCouponCode"
+                                :disabled="isProcessing">
                           套用優惠碼
                         </button>
                       </div>
@@ -198,11 +199,11 @@
               <p class="mb-0 h4 font-weight-bold">Total</p>
               <p v-if="coupon.enabled"
                  class="mb-0 h4 font-weight-bold">
-                {{ cartTotal * (coupon.percent / 100)  | money}}
+                {{ cartTotal * (coupon.percent / 100)  | money }}
               </p>
               <p class="mb-0 h4 font-weight-bold"
                  v-else>
-                {{cartTotal | money}}
+                {{ cartTotal | money }}
               </p>
             </div>
           </div>
@@ -213,7 +214,7 @@
 </template>
 
 <script>
-import Toast from '../../utils/Toast';
+import Toast from '@/utils/Toast';
 
 export default {
   data() {
@@ -244,16 +245,16 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          this.isLoading = false;
           this.carts = res.data.data;
           this.updateTotal();
+          this.isLoading = false;
         })
         .catch(() => {
-          this.isLoading = false;
           Toast.fire({
             title: '無法取得資料，稍後再試',
             icon: 'error',
           });
+          this.isLoading = false;
         });
     },
     updateTotal() {
@@ -265,17 +266,17 @@ export default {
     },
     addCouponCode() {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/coupon/search`;
-      this.isLoading = true;
+      this.isProcessing = true;
       this.$http
         .post(url, { code: this.coupon_code })
         .then((res) => {
           this.getCart();
-          this.isLoading = false;
           this.coupon = res.data.data;
           Toast.fire({
             text: '優惠卷已加入',
             icon: 'success',
           });
+          this.isProcessing = false;
         })
         .catch((err) => {
           const errorData = err.response.data.errors;
@@ -292,7 +293,7 @@ export default {
               title: `${message}`,
               icon: 'error',
             });
-            this.isLoading = false;
+            this.isProcessing = false;
           }
         });
     },
@@ -307,8 +308,6 @@ export default {
       this.$http
         .post(url, order)
         .then((res) => {
-          this.isLoading = false;
-          this.isProcessing = false;
           this.$bus.$emit('update-total');
           Toast.fire({
             text: '訂單已送出',
@@ -316,14 +315,16 @@ export default {
           });
           this.getCart();
           this.$router.push(`/checkout/${res.data.data.id}`);
-        })
-        .catch(() => {
           this.isLoading = false;
           this.isProcessing = false;
+        })
+        .catch(() => {
           Toast.fire({
             text: '訂單已送出失敗，稍後在試',
             icon: 'error',
           });
+          this.isLoading = false;
+          this.isProcessing = false;
         });
     },
   },

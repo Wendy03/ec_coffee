@@ -193,7 +193,7 @@
 <script>
 import $ from 'jquery';
 import { VueEditor } from 'vue2-editor';
-import Toast from '../../utils/Toast';
+import Toast from '@/utils/Toast';
 
 export default {
   data() {
@@ -223,16 +223,16 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          this.status.loadingItem = '';
           this.tempProduct = res.data.data;
           $('#productModal').modal('show');
+          this.status.loadingItem = '';
         })
         .catch(() => {
-          this.status.loadingItem = '';
           Toast.fire({
             title: '無法取得資料，稍後再試',
             icon: 'error',
           });
+          this.status.loadingItem = '';
         });
     },
     updateProduct() {

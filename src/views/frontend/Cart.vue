@@ -1,14 +1,14 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="conatiner-fluid my-5"
+    <div class="container my-5"
          style="min-height:100vh; padding-top: 70px;">
       <div class="d-flex justify-content-center"
            v-if="carts.length > 0">
         <div class="col-md-6 bg-white py-5"
              style="min-height: calc(100vh - 70px);">
           <div class="d-flex justify-content-between mb-5">
-            <h2 class="mt-2">Cart Detail</h2>
+            <h2 class="mt-2">購物車</h2>
             <a href="#"
                class="h2"
                @click.prevent="removeAllCartItem()">
@@ -61,7 +61,7 @@
                     </div>
                   </div>
                   <p class="mb-0 ml-auto">
-                    {{ item.product.price | money}} /{{item.product.unit}}
+                    {{ item.product.price | money}} / {{ item.product.unit }}
                   </p>
                 </div>
               </div>
@@ -71,7 +71,7 @@
             <div class="d-flex justify-content-between mt-4">
               <p class="mb-0 h4 font-weight-bold">Total</p>
               <p class="mb-0 h4 font-weight-bold">
-                {{ cartTotal | money}}
+                {{ cartTotal | money }}
               </p>
             </div>
 
@@ -85,35 +85,43 @@
               繼續購物
             </router-link>
             <router-link to="/order"
-                         class="btn btn-dark mt-5">
+                         class="btn btn-brown mt-5">
               確認訂單
             </router-link>
           </div>
         </div>
       </div>
-      <div class="d-flex justify-content-center mt-5"
-           v-else>
-        <h4 class="mb-3">購物車無商品，回到商城選購</h4>
-        <router-link to="/products"
-                     class="text-dark mt-5 mt-3">
-          <i class="fas fa-chevron-left mr-2"></i>
-          繼續購物
-        </router-link>
+      <div v-else>
+        <div class="d-flex justify-content-center my-5">
+          <h4 class="mb-3">購物車無商品，回到商城選購</h4>
+          <router-link to="/products"
+                       class="text-dark mt-5 mt-3">
+            <i class="fas fa-chevron-left mr-2"></i>
+            繼續購物
+          </router-link>
+        </div>
+        <div class="mt-5">
+          <HomeCategory />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Toast from '../../utils/Toast';
+import Toast from '@/utils/Toast';
+import HomeCategory from '@/components/frontend/HomeCategory.vue';
 
 export default {
   data() {
     return {
-      isLoading: false,
       carts: {},
       cartTotal: 0,
+      isLoading: false,
     };
+  },
+  components: {
+    HomeCategory,
   },
   created() {
     this.getCart();
@@ -125,16 +133,16 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          this.isLoading = false;
           this.carts = res.data.data;
           this.updateTotal();
+          this.isLoading = false;
         })
         .catch(() => {
-          this.isLoading = false;
           Toast.fire({
             title: '無法取得資料，稍後再試',
             icon: 'error',
           });
+          this.isLoading = false;
         });
     },
     updateTotal() {
@@ -155,19 +163,19 @@ export default {
       this.$http
         .patch(url, cart)
         .then(() => {
-          this.isLoading = false;
           this.getCart();
           Toast.fire({
             text: '商品已更正數量',
             icon: 'success',
           });
+          this.isLoading = false;
         })
         .catch(() => {
-          this.isLoading = false;
           Toast.fire({
             title: '商品無法更新數量，稍後再試',
             icon: 'error',
           });
+          this.isLoading = false;
         });
     },
     removeAllCartItem() {
@@ -176,13 +184,13 @@ export default {
       this.$http
         .delete(url)
         .then(() => {
-          this.isLoading = false;
           this.$bus.$emit('update-total');
           this.getCart();
           Toast.fire({
             text: '商品已全部刪除',
             icon: 'success',
           });
+          this.isLoading = false;
           this.$router.push('/products');
         })
         .catch(() => {
@@ -190,6 +198,7 @@ export default {
             text: '商品刪除失敗',
             icon: 'error',
           });
+          this.isLoading = false;
         });
     },
     removeCartItem(id) {
@@ -198,19 +207,20 @@ export default {
       this.$http
         .delete(url)
         .then(() => {
-          this.isLoading = false;
           this.$bus.$emit('update-total');
           this.getCart();
           Toast.fire({
             text: '商品已刪除',
             icon: 'success',
           });
+          this.isLoading = false;
         })
         .catch(() => {
           Toast.fire({
             text: '商品刪除失敗',
             icon: 'error',
           });
+          this.isLoading = false;
         });
     },
   },

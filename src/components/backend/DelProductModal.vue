@@ -1,6 +1,6 @@
 <template>
   <div class="modal fade"
-       id="delFileModal"
+       id="delProductModal"
        tabindex="-1"
        role="dialog"
        aria-labelledby="exampleModalLabel"
@@ -11,7 +11,7 @@
         <div class="modal-header bg-danger text-white">
           <h5 class="modal-title"
               id="exampleModalLabel">
-            <span>刪除圖片</span>
+            <span>刪除產品</span>
           </h5>
           <button type="button"
                   class="close"
@@ -21,15 +21,9 @@
           </button>
         </div>
         <div class="modal-body">
-          <div style="
-                    height: 100px;
-                    width: 100px;
-                    background-size: cover;
-                    background-position: center;
-                  "
-               :style="{ backgroundImage: `url(${tempStorage.path})` }">
-          </div>
-           是否刪除圖片(刪除後將無法恢復)。
+          是否刪除
+          <strong class="text-danger">{{ tempProduct.title }}</strong>
+          商品(刪除後將無法恢復)。
         </div>
         <div class="modal-footer">
           <button type="button"
@@ -39,7 +33,7 @@
           </button>
           <button type="button"
                   class="btn btn-danger"
-                  @click.prevent="delFile"
+                  @click.prevent="delProduct"
                   :disabled="isProcessing">
             確認刪除
           </button>
@@ -51,7 +45,7 @@
 
 <script>
 import $ from 'jquery';
-import Toast from '../../utils/Toast';
+import Toast from '@/utils/Toast';
 
 export default {
   data() {
@@ -60,33 +54,31 @@ export default {
     };
   },
   props: {
-    tempStorage: {
+    tempProduct: {
       type: Object,
       required: true,
     },
   },
   methods: {
-    delFile() {
-      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/storage/${this.tempStorage.id}`;
+    delProduct() {
+      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product/${this.tempProduct.id}`;
       this.isProcessing = true;
-      this.$http
-        .delete(url)
+      this.$http.delete(url)
         .then(() => {
-          this.isProcessing = false;
-          $('#delFileModal').modal('hide');
+          $('#delProductModal').modal('hide');
           this.$emit('update');
           Toast.fire({
             title: '刪除成功',
             icon: 'success',
           });
+          this.isProcessing = false;
         })
         .catch(() => {
-          this.isProcessing = false;
-          $('#delFileModal').modal('hide');
           Toast.fire({
             title: '刪除失敗',
             icon: 'error',
           });
+          this.isProcessing = false;
         });
     },
   },
