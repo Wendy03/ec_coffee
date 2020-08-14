@@ -61,7 +61,7 @@
                     </div>
                   </div>
                   <p class="mb-0 ml-auto">
-                    {{ item.product.price | money}} / {{ item.product.unit }}
+                    {{ item.product.price | money }} / {{ item.product.unit }}
                   </p>
                 </div>
               </div>
