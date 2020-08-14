@@ -1,12 +1,12 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="container-fluid"
+    <div class="container"
          style="min-height:100vh;">
       <div class="row mt-5"
            v-if="products.length > 0">
         <div class="col-md-2 mb-2 my-5">
-          <ul class="list-group sticky-top">
+          <ul class="list-group sticky-top rounded-0">
             <a href="#"
                class="list-group-item list-group-item-action"
                @click.prevent="filterCategory = ''"
@@ -23,19 +23,19 @@
             </a>
           </ul>
         </div>
-        <div class="col-md-9 my-5">
+        <div class="col-md-10 my-5">
           <div class="row">
             <div class="col-md-4 col-sm-6 mb-3 mb-4"
                  v-for="item in filterCategories"
                  :key="item.id">
-              <div class="card h-100">
+              <div class="card h-100 rounded-0">
                 <router-link :to="`/product/${ item.id }`">
                   <div style="
                     height: 180px;
                     background-size: cover;
                     background-position: center;
                   "
-                       class="card-img"
+                       class="rounded-0"
                        :style="{ backgroundImage: `url(${ item.imageUrl[0] })` }">
                   </div>
                 </router-link>
@@ -47,13 +47,13 @@
                     {{ item.title }}
                   </h5>
                   <p class="card-text">{{ item.content }}</p>
-                  <div class="text-right pr-2">
+                  <div class="text-right pr-2 h6">
                     {{ item.price | money }} 元
                   </div>
                 </div>
-                <div class="card-footer d-flex border-top-0">
+                <div class="card-footer d-flex border-top-0 bg-white">
                   <button type="button"
-                          class="btn btn-outline-brown btn-block"
+                          class="btn btn-outline-brown btn-block rounded-0"
                           @click.prevent="addToCart(item.id)">
                     <i class="fa fa-cart-plus"
                        aria-hidden="true"></i>
@@ -68,14 +68,12 @@
           </div>
         </div>
       </div>
-      <ToTop />
     </div>
   </div>
 </template>
 
 <script>
 import Toast from '@/utils/Toast';
-import ToTop from '@/components/ToTop.vue';
 
 export default {
   data() {
@@ -89,9 +87,6 @@ export default {
       categories: ['中焙咖啡豆', '淺焙咖啡豆', '周邊商品'],
       filterCategory: '',
     };
-  },
-  components: {
-    ToTop,
   },
   created() {
     this.getProducts();
@@ -165,7 +160,7 @@ export default {
 
 <style scoped>
   .list-group {
-    top: 80px;
+    top: 85px;
   }
 
   .list-group-item.active {

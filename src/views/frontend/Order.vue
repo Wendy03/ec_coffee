@@ -125,11 +125,11 @@
                 flex-md-row mt-4 justify-content-between
                 align-items-md-center align-items-end w-100">
                   <router-link to="/cart"
-                               class="text-dark mt-md-0 mt-3">
+                               class="text-dark mt-md-0 mt-3 h5">
                     <i class="fas fa-chevron-left mr-2"></i>
                     回到購物車
                   </router-link>
-                  <button class="btn btn-brown float-right"
+                  <button class="btn btn-brown float-right rounded-0"
                           :disabled="invalid">
                     <i class="fas fa-spinner fa-spin"
                        v-if="isProcessing">

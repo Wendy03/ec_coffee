@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5">
+  <div class="container my-7">
     <h4 class="font-weight-bold">商品介紹</h4>
     <div class="row mt-2 mb-5">
       <div class="col-md-4 my-4">

@@ -3,7 +3,7 @@
        style="min-height:100vh; padding-top: 70px;">
     <AboutCard />
     <hr>
-    <div class="my-5">
+    <div class="my-7">
       <h3 class="text-center mb-5 font-weight-bold">核心價值</h3>
       <div class="row">
         <div class="col-md-4 my-4">
@@ -64,6 +64,12 @@
           </div>
         </div>
       </div>
+    </div>
+    <hr>
+    <div class=" my-5">
+      <h3 class="text-center" >聯絡我們</h3>
+      <p class="text-center mt-5">電話: 03-1234567</p>
+      <p class="text-center mt-2">地址: 順著咖啡香就可以找到我們</p>
     </div>
   </div>
 </template>

@@ -5,7 +5,7 @@
     <hr>
     <HomeCategory />
     <hr>
-    <div class="my-5">
+    <div class="my-7">
       <AboutCard />
     </div>
   </div>

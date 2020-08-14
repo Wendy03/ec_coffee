@@ -39,7 +39,7 @@
                   <div class="input-group w-50 align-items-center mt-3">
                     <div class="input-group">
                       <div class="input-group-append">
-                        <button class="btn btn-outline-primary btn-sm"
+                        <button class="btn btn-outline-brown btn-sm border-0"
                                 @click.prevent="quantityUpdate(item.product.id, item.quantity - 1)"
                                 :disabled="item.quantity === 1">
                           <i class="fas fa-minus"></i>
@@ -47,12 +47,12 @@
                       </div>
                       <input id="quantity"
                              type="number"
-                             class="form-control text-center"
+                             class="form-control text-center border-0"
                              :value="item.quantity"
                              @change="quantityUpdate(item.product.id, $event.target.value)"
                              disabled />
                       <div class="input-group-prepend">
-                        <button class="btn btn-outline-primary btn-sm"
+                        <button class="btn btn-outline-brown btn-sm border-0"
                                 @click.prevent="quantityUpdate(item.product.id, item.quantity + 1)"
                                 :disabled="item.quantity === 5">
                           <i class="fas fa-plus"></i>
@@ -80,27 +80,27 @@
                 flex-md-row flex-sm-row mt-4 justify-content-between
                 align-items-md-center align-items-end w-100">
             <router-link to="/products"
-                         class="text-dark mt-5">
+                         class="text-dark mt-5 h5">
               <i class="fas fa-chevron-left mr-1"></i>
               繼續購物
             </router-link>
             <router-link to="/order"
-                         class="btn btn-brown mt-5">
+                         class="btn btn-brown mt-5 rounded-0">
               確認訂單
             </router-link>
           </div>
         </div>
       </div>
       <div v-else>
-        <div class="d-flex justify-content-center my-5">
+        <div class="d-flex justify-content-center my-7">
           <h4 class="mb-3">購物車無商品，回到商城選購</h4>
           <router-link to="/products"
-                       class="text-dark mt-5 mt-3">
+                       class="text-dark mt-5 mt-3 h5">
             <i class="fas fa-chevron-left mr-2"></i>
             繼續購物
           </router-link>
         </div>
-        <div class="mt-5">
+        <div class="mt-7">
           <HomeCategory />
         </div>
       </div>

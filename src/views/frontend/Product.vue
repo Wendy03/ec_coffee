@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="container my-5"
+    <div class="container my-5 col-10"
          style="min-height:100vh; padding-top: 50px;"
          v-if="product.imageUrl[0]">
       <nav aria-label="breadcrumb">
@@ -42,7 +42,7 @@
               <div class="d-flex">
                 <div class="w-50 mr-3">
                   <select name="unit"
-                          class="form-control mr-3"
+                          class="form-control mr-3 rounded-0"
                           v-model="product.num">
                     <option :value="num"
                             v-for="num in 5"
@@ -52,7 +52,7 @@
                   </select>
                 </div>
                 <button type="button"
-                        class="btn btn-brown w-50"
+                        class="btn btn-brown w-50 rounded-0"
                         @click.prevent="addToCart(product, product.num)">
                   <i class="fas fa-spinner fa-spin"
                      v-if="product.id === status.loadingItem"></i>
@@ -70,7 +70,6 @@
       <hr>
       <Information />
     </div>
-    <ToTop />
   </div>
 </template>
 
@@ -78,7 +77,6 @@
 import Toast from '@/utils/Toast';
 import Information from '@/components/frontend/Information.vue';
 import RelatePorducts from '@/components/frontend/RelatedProducts.vue';
-import ToTop from '@/components/ToTop.vue';
 
 export default {
   data() {
@@ -96,7 +94,6 @@ export default {
   components: {
     Information,
     RelatePorducts,
-    ToTop,
   },
   created() {
     this.getProduct();

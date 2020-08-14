@@ -59,3 +59,9 @@ export default {
   },
 };
 </script>
+
+<style>
+  .active {
+    border-bottom: solid#FFFFFF 3px;
+  }
+</style>

@@ -6,10 +6,8 @@
            class="rounded-circle mr-5"
            style="width: 160px; height: 160px; object-fit: cover;">
       <div class="col-md-4 mt-3">
-        <h3>關於
-          <span style="font-family: 'Lemonada', cursive;">
-            Coffee
-          </span>
+        <h3 style="font-family: 'Lemonada', cursive;">
+          Coffee
         </h3>
         <p>
           從原產地的一株咖啡樹，到烘焙成一粒粒金黃咖啡豆；堅持採購並且烘焙最高品質的咖啡，這是我們一直努力的基本原則。
