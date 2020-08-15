@@ -1,13 +1,13 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="conatiner-fluid my-5"
+    <div class="container my-5"
          style="padding-top: 70px;"
          v-if="carts.length > 0">
       <div class="row justify-content-center flex-md-row flex-column-reverse">
         <div class="col-md-6">
           <div class="bg-white p-4">
-            <h3 class="font-weight-bold">客戶資訊</h3>
+            <h3 class="text-brown font-weight-bold">客戶資訊</h3>
             <validation-observer v-slot="{ invalid }"
                                  class="col-md-6">
               <form @submit.prevent="createOrder">
@@ -20,6 +20,7 @@
                            type="email"
                            name="email"
                            v-model.trim="form.email"
+                           placeholder="請輸入 Email"
                            class="form-control"
                            :class="classes" />
                     <span class="invalid-feedback">{{ errors[0] }}</span>
@@ -130,7 +131,8 @@
                     回到購物車
                   </router-link>
                   <button class="btn btn-brown float-right rounded-0"
-                          :disabled="invalid">
+                          :disabled="invalid"
+                          :class="{ disabled: isProcessing }">
                     <i class="fas fa-spinner fa-spin"
                        v-if="isProcessing">
                     </i>
@@ -144,7 +146,7 @@
         </div>
         <div class="col-md-4 mb-5">
           <div class="border p-5 mx-2 mb-4">
-            <h4 class="mb-4">訂單明細</h4>
+            <h4 class="mb-4 text-brown font-weight-bold">訂單明細</h4>
             <div v-for="item in carts"
                  :key="item.product.id + 1">
               <div class="d-flex mb-2">
@@ -169,7 +171,9 @@
               <tbody>
                 <tr>
                   <th scope="row"
-                      class="border-0 px-0 pt-4 font-weight-normal">Subtotal</th>
+                      class="border-0 px-0 pt-4 font-weight-normal">
+                    小計
+                  </th>
                   <td class="text-right border-0 px-0 pt-4">
                     {{ cartTotal | money }}
                   </td>
@@ -196,7 +200,7 @@
               </tbody>
             </table>
             <div class="d-flex justify-content-between mt-4">
-              <p class="mb-0 h4 font-weight-bold">Total</p>
+              <p class="mb-0 h4 font-weight-bold">總計</p>
               <p v-if="coupon.enabled"
                  class="mb-0 h4 font-weight-bold">
                 {{ cartTotal * (coupon.percent / 100)  | money }}
@@ -299,7 +303,6 @@ export default {
     },
     createOrder() {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders`;
-      this.isLoading = true;
       this.isProcessing = true;
       const order = { ...this.form };
       if (this.coupon.enabled) {
@@ -315,7 +318,6 @@ export default {
           });
           this.getCart();
           this.$router.push(`/checkout/${res.data.data.id}`);
-          this.isLoading = false;
           this.isProcessing = false;
         })
         .catch(() => {
@@ -323,10 +325,16 @@ export default {
             text: '訂單已送出失敗，稍後在試',
             icon: 'error',
           });
-          this.isLoading = false;
           this.isProcessing = false;
         });
     },
   },
 };
 </script>
+
+<style>
+.form-control::placeholder {
+  color: #aaaaaa;
+  font-size: 0.8rem;
+}
+</style>

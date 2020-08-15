@@ -26,7 +26,7 @@
                  :class="classes">
           <!-- 錯誤訊息 -->
           <div class="input-group-append">
-            <button class="btn btn-dark rounded-0"
+            <button class="btn btn-brown rounded-0"
                     type="button"
                     @click.prevent="subscription">
               訂閱

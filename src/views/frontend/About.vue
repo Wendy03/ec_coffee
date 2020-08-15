@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5"
+  <div class="container my-5"
        style="min-height:100vh; padding-top: 70px;">
     <AboutCard />
     <hr>
@@ -47,7 +47,7 @@
         </div>
         <div class="col-md-4 my-4">
           <div class="card border-0 mb-4 position-relative position-relative">
-            <img src="https://images.pexels.com/photos/92354/pexels-photo-92354.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+            <img src="https://images.pexels.com/photos/1459339/pexels-photo-1459339.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                  alt=""
                  style="width: 300px; height: 200px; object-fit: cover;">
             <div class="card-body p-0">
@@ -66,8 +66,8 @@
       </div>
     </div>
     <hr>
-    <div class=" my-5">
-      <h3 class="text-center" >聯絡我們</h3>
+    <div class=" my-7">
+      <h3 class="text-center font-weight-bold" >聯絡我們</h3>
       <p class="text-center mt-5">電話: 03-1234567</p>
       <p class="text-center mt-2">地址: 順著咖啡香就可以找到我們</p>
     </div>

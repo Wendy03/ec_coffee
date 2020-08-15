@@ -8,7 +8,7 @@
         <div class="col-md-6 bg-white py-5"
              style="min-height: calc(100vh - 70px);">
           <div class="d-flex justify-content-between mb-5">
-            <h2 class="mt-2">購物車</h2>
+            <h2 class="mt-2 text-brown font-weight-bold">購物車</h2>
             <a href="#"
                class="h2"
                @click.prevent="removeAllCartItem()">
@@ -69,7 +69,7 @@
           </div>
           <div style="margin-left: 124px;">
             <div class="d-flex justify-content-between mt-4">
-              <p class="mb-0 h4 font-weight-bold">Total</p>
+              <p class="mb-0 h4 font-weight-bold">總計</p>
               <p class="mb-0 h4 font-weight-bold">
                 {{ cartTotal | money }}
               </p>

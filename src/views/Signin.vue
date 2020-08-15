@@ -52,7 +52,7 @@
                        required />
               </div>
               <br />
-              <button class="btn btn-lg btn-primary btn-block mb-4"
+              <button class="btn btn-lg btn-brown btn-block mb-4"
                       type="submit"
                       :disabled="isProcessing">
                 登入

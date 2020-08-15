@@ -5,7 +5,7 @@
          style="min-height:100vh;">
       <div class="row mt-5"
            v-if="products.length > 0">
-        <div class="col-md-2 mb-2 my-5">
+        <div class="col-lg-2 col-md-3 mb-2 my-5">
           <ul class="list-group sticky-top rounded-0">
             <a href="#"
                class="list-group-item list-group-item-action"
@@ -23,9 +23,9 @@
             </a>
           </ul>
         </div>
-        <div class="col-md-10 my-5">
+        <div class="col-lg-10 col-md-9 my-5">
           <div class="row">
-            <div class="col-md-4 col-sm-6 mb-3 mb-4"
+            <div class="col-lg-4 col-sm-6 mb-3 mb-4"
                  v-for="item in filterCategories"
                  :key="item.id">
               <div class="card h-100 rounded-0">
@@ -43,7 +43,7 @@
                   <span class="badge badge-secondary float-right ml-2">
                     {{ item.category }}
                   </span>
-                  <h5 class="card-title">
+                  <h5 class="card-title font-weight-bold text-brown">
                     {{ item.title }}
                   </h5>
                   <p class="card-text">{{ item.content }}</p>
@@ -54,7 +54,8 @@
                 <div class="card-footer d-flex border-top-0 bg-white">
                   <button type="button"
                           class="btn btn-outline-brown btn-block rounded-0"
-                          @click.prevent="addToCart(item.id)">
+                          @click.prevent="addToCart(item.id)"
+                          :disabled="isProcessing">
                     <i class="fa fa-cart-plus"
                        aria-hidden="true"></i>
                     <i class="fas fa-spinner fa-spin"
@@ -78,7 +79,6 @@ import Toast from '@/utils/Toast';
 export default {
   data() {
     return {
-      isLoading: false,
       status: {
         loadingItem: '',
       },
@@ -86,6 +86,8 @@ export default {
       carts: [],
       categories: ['中焙咖啡豆', '淺焙咖啡豆', '周邊商品'],
       filterCategory: '',
+      isLoading: false,
+      isProcessing: false,
     };
   },
   created() {
@@ -115,6 +117,7 @@ export default {
     },
     addToCart(id, quantity = 1) {
       this.status.loadingItem = id;
+      this.isProcessing = true;
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`;
       const cart = {
         product: id,
@@ -129,6 +132,7 @@ export default {
             icon: 'success',
           });
           this.status.loadingItem = '';
+          this.isProcessing = false;
         })
         .catch((err) => {
           const errorData = err.response.data.errors;
@@ -139,6 +143,7 @@ export default {
             });
           }
           this.status.loadingItem = '';
+          this.isProcessing = false;
         });
     },
   },

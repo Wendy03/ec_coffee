@@ -28,14 +28,19 @@ const routes = [
         component: () => import('../views/frontend/Product.vue'),
       },
       {
-        path: 'cart',
-        name: 'cart',
-        component: () => import('../views/frontend/Cart.vue'),
-      },
-      {
         path: 'class',
         name: 'class',
         component: () => import('../views/frontend/Class.vue'),
+      },
+      {
+        path: 'question',
+        name: 'question',
+        component: () => import('../views/frontend/Information.vue'),
+      },
+      {
+        path: 'cart',
+        name: 'cart',
+        component: () => import('../views/frontend/Cart.vue'),
       },
       {
         path: 'order',

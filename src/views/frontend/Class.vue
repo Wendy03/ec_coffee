@@ -1,15 +1,15 @@
 <template>
-  <div class="container col-8"
+  <div class="container col-lg-8"
        style="min-height:100vh; padding-top: 70px;">
     <div class="my-5">
       <h3 class="mb-5 text-brown font-weight-bold">咖啡小教室</h3>
       <div class="border border-secondary">
         <div class="row my-3 px-3">
           <div class="col-lg-4">
-            <img src="https://images.unsplash.com/photo-1503076634654-4383ec86da1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+            <img src="https://images.unsplash.com/photo-1514927298007-a2b56e5270e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80"
                  alt=""
-                 class="rounded mr-5"
-                 style="width: 150px; height: 150px; object-fit: cover;">
+                 class="w-100"
+                 style="height: 150px; object-fit: cover;">
           </div>
           <div class="col-lg-6 mt-3">
             <h4>新鮮度判斷</h4>
@@ -26,8 +26,8 @@
           <div class="col-lg-4">
             <img src="https://images.unsplash.com/44/E5KMvPp9SsCnqmEGUwAS_2014-08-10%2012.56.40%201.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=959&q=80"
                  alt=""
-                 class="rounded mr-5"
-                 style="width: 150px; height: 150px; object-fit: cover;">
+                 class="w-100"
+                 style="height: 150px; object-fit: cover;">
           </div>
           <div class="col-lg-6 mt-3">
             <h4>咖啡豆保存</h4>
@@ -42,18 +42,22 @@
       <div class="border border-secondary mt-4">
         <div class="row my-3 px-3">
           <div class="col-lg-4">
-            <img src="https://images.unsplash.com/photo-1503076634654-4383ec86da1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+            <img src="https://images.unsplash.com/photo-1514927298007-a2b56e5270e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80"
                  alt=""
-                 class="rounded mr-5"
-                 style="width: 150px; height: 150px; object-fit: cover;">
+                 class="w-100"
+                 style="height: 150px; object-fit: cover;">
           </div>
           <div class="col-lg-6 mt-3">
             <h4>手沖咖啡</h4>
             <ol>
+              <li>粉水比：15 ~ 17克、下壺萃取200~250克</li>
+              <li>磨咖啡豆： 研磨度3 ~ 4 </li>
               <li>水溫：90℃</li>
-              <li>研磨度：3~4 (小飛鷹或小飛馬)</li>
-              <li>粉水比：15~17克、下壺萃取200~250克</li>
-              <li>以「の」字形從中央到外層來回注水不間斷</li>
+              <li>沖洗濾紙：沖洗掉濾紙的雜味與雜質</li>
+              <li>倒粉： 咖啡粉表面呈平坦狀</li>
+              <li>第一次注水：由濾杯中心開，約注水15 ~ 30秒</li>
+              <li>悶蒸：約悶蒸20 〜 40秒，等膨脹的咖啡粉開始塌陷</li>
+              <li>第二次注水：以「の」字形從中央到外層來回注水不間斷</li>
             </ol>
           </div>
         </div>

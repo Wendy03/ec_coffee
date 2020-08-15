@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="container my-5 col-10"
+    <div class="container my-5 col-lg-10"
          style="min-height:100vh; padding-top: 50px;"
          v-if="product.imageUrl[0]">
       <nav aria-label="breadcrumb">
@@ -53,7 +53,8 @@
                 </div>
                 <button type="button"
                         class="btn btn-brown w-50 rounded-0"
-                        @click.prevent="addToCart(product, product.num)">
+                        @click.prevent="addToCart(product, product.num)"
+                        :disabled="isProcessing">
                   <i class="fas fa-spinner fa-spin"
                      v-if="product.id === status.loadingItem"></i>
                   加到購物車
@@ -68,20 +69,37 @@
       <RelatePorducts :product="product"
                       @update="getProduct" />
       <hr>
-      <Information />
+      <div class="mt-4">
+        <h5 class="mb-3 font-weight-bold">參考</h5>
+        <p class="ml-4">有任何問題可以參考以下資訊：</p>
+        <div>
+          <ul class="d-flex list-unstyled mb-0 ml-5">
+            <li class="mr-5">
+              <router-link to="/class"
+                           class="text-brown">
+                咖啡小教室
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/question"
+                           class="text-brown">
+                常見問題
+              </router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Toast from '@/utils/Toast';
-import Information from '@/components/frontend/Information.vue';
 import RelatePorducts from '@/components/frontend/RelatedProducts.vue';
 
 export default {
   data() {
     return {
-      isLoading: false,
       status: {
         loadingItem: '',
       },
@@ -89,10 +107,11 @@ export default {
         num: 1,
         imageUrl: [],
       },
+      isLoading: false,
+      isProcessing: false,
     };
   },
   components: {
-    Information,
     RelatePorducts,
   },
   created() {
@@ -102,7 +121,6 @@ export default {
     getProduct() {
       const { id } = this.$route.params;
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/product/${id}`;
-
       this.isLoading = true;
       this.$http
         .get(url)
@@ -124,6 +142,7 @@ export default {
     },
     addToCart(item, quantity = 1) {
       this.status.loadingItem = item.id;
+      this.isProcessing = true;
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`;
       const cart = {
         product: item.id,
@@ -138,6 +157,7 @@ export default {
             icon: 'success',
           });
           this.status.loadingItem = '';
+          this.isProcessing = false;
         })
         .catch((err) => {
           const errorData = err.response.data.errors;
@@ -148,6 +168,7 @@ export default {
             });
           }
           this.status.loadingItem = '';
+          this.isProcessing = false;
         });
     },
   },

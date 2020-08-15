@@ -7,7 +7,7 @@
         <div class="row">
           <div class="col-md-6"
                v-if="order.paid">
-            <h2>訂單完成</h2>
+            <h2 class="text-brown font-weight-bold">訂單完成</h2>
             <div class="mt-4">
               <h5>感謝訂購</h5>
               <p class="ml-2">訂單完成預計1~2天出貨</p>
@@ -20,12 +20,12 @@
             </div>
             <router-link to="/"
                          class="btn btn-outline-dark mr-2 rounded-0 mt-4">
-              Back To Home
+              回到首頁
             </router-link>
           </div>
           <div class="col-md-6"
                v-else>
-            <h2 class="mb-5">付款</h2>
+            <h2 class="mb-5 text-brown font-weight-bold">付款</h2>
             <p>差一步完成訂單，點選確認付款完成訂單</p>
             <p>對於咖啡豆品質要求，收到訂單開始製作，
               大約 1 ~ 2天出貨
@@ -34,7 +34,9 @@
           <div class="col-md-6 mt-3">
             <div class="card rounded-0 py-4 mb-2">
               <div class="card-header border-bottom-0 bg-white px-4 py-0">
-                <h2>訂單資料</h2>
+                <h2 class="text-brown font-weight-bold mb-5">
+                  訂單資料
+                </h2>
               </div>
               <div class="card-body px-4 py-0">
                 <ul class="list-group list-group-flush">
@@ -99,7 +101,7 @@
                         <tr>
                           <th scope="row"
                               class="border-0 px-0 font-weight-normal">
-                            Total
+                            付款金額
                           </th>
                           <td class="text-right border-0 px-0">
                             {{ order.amount | money }}
@@ -143,7 +145,7 @@
                @click.prevent="backHome"
                class="btn btn-outline-dark mr-2 rounded-0 mb-4"
                v-if="order.paid === false">
-              Back To Home
+              回到首頁
             </a>
           </div>
         </div>

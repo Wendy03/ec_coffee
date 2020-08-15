@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-brown fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-tan fixed-top">
     <router-link class="navbar-brand"
                  to="/">
       Coffee
@@ -18,20 +18,26 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <router-link to="/about"
-                       class="nav-link text-light mr-2">
+                       class="nav-link text-white mr-2">
             關於我們
           </router-link>
         </li>
         <li class="nav-item">
           <router-link to="/products"
-                       class="nav-link text-light">
+                       class="nav-link text-white">
             商品列表
           </router-link>
         </li>
         <li class="nav-item">
           <router-link to="/class"
-                       class="nav-link text-light">
+                       class="nav-link text-white">
             咖啡小教室
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/question"
+                       class="nav-link text-white">
+            常見問題
           </router-link>
         </li>
       </ul>
@@ -61,7 +67,9 @@ export default {
 </script>
 
 <style>
-  .active {
-    border-bottom: solid#FFFFFF 3px;
+  @media screen and (min-width: 769px) {
+    .active {
+      border-bottom: solid#FFFFFF 3px;
+    }
   }
 </style>
