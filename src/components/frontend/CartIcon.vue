@@ -1,7 +1,7 @@
 <template>
   <div>
     <i class="fa fa-shopping-cart text-light fa-1x"
-       style="font-size: 1.4rem"
+       style="font-size: 1.3rem"
        aria-hidden="true"></i>
     <span class="badge badge-pill badge-danger"
           style="transform: translateX(-7px) translateY(-2px)">

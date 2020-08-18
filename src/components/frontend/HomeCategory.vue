@@ -1,9 +1,9 @@
 <template>
-  <div class="container my-7">
+  <div class="my-7">
     <h4 class="font-weight-bold">商品介紹</h4>
     <div class="row mt-2 mb-5">
-      <div class="col-md-4 my-4">
-        <div class="card border-0 mb-4 position-relative position-relative">
+      <div class="col-lg-4 my-4">
+        <div class="card border-0 mb-4 position-relative">
           <a href="#"
              @click.prevent="toCategory('中焙咖啡豆')">
             <img src="https://images.unsplash.com/photo-1442550528053-c431ecb55509?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
@@ -20,8 +20,8 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 mt-md-4">
-        <div class="card border-0 mb-4 position-relative position-relative">
+      <div class="col-lg-4 my-4">
+        <div class="card border-0 mb-4 position-relative">
           <a href="#"
              @click.prevent="toCategory('淺焙咖啡豆')">
             <img src="https://images.pexels.com/photos/606545/pexels-photo-606545.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
@@ -38,7 +38,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 mt-md-4">
+      <div class="col-lg-4 my-4">
         <div class="card border-0 mb-4 position-relative position-relative">
           <a href="#"
              @click.prevent="toCategory('周邊商品')">

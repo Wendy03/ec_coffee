@@ -1,11 +1,10 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="container my-5"
-         style="padding-top: 70px;"
+    <div class="container mt-2"
          v-if="carts.length > 0">
-      <div class="row justify-content-center flex-md-row flex-column-reverse">
-        <div class="col-md-6">
+      <div class="row justify-content-center flex-lg-row flex-column-reverse">
+        <div class="col-lg-6">
           <div class="bg-white p-4">
             <h3 class="text-brown font-weight-bold">客戶資訊</h3>
             <validation-observer v-slot="{ invalid }"
@@ -142,10 +141,9 @@
               </form>
             </validation-observer>
           </div>
-
         </div>
-        <div class="col-md-4 mb-5">
-          <div class="border p-5 mx-2 mb-4">
+        <div class="col-lg-4 mb-5">
+          <div class="border p-5 mx-2 mb-4 order-card">
             <h4 class="mb-4 text-brown font-weight-bold">訂單明細</h4>
             <div v-for="item in carts"
                  :key="item.product.id + 1">
@@ -203,7 +201,7 @@
               <p class="mb-0 h4 font-weight-bold">總計</p>
               <p v-if="coupon.enabled"
                  class="mb-0 h4 font-weight-bold">
-                {{ cartTotal * (coupon.percent / 100)  | money }}
+                {{ cartTotal * (coupon.percent / 100) | money }}
               </p>
               <p class="mb-0 h4 font-weight-bold"
                  v-else>
@@ -333,8 +331,21 @@ export default {
 </script>
 
 <style>
-.form-control::placeholder {
-  color: #aaaaaa;
-  font-size: 0.8rem;
-}
+  .form-control::placeholder {
+    color: #aaaaaa;
+    font-size: 0.87rem;
+  }
+
+  .form-control {
+    border-color: rgb(119, 117, 117);
+    border-radius: 0%;
+  }
+
+  @media screen and (min-width: 769px) {
+    .order-card {
+      position: -webkit-sticky; /* Safari */
+      position: sticky;
+      top: 85px;
+    }
+  }
 </style>

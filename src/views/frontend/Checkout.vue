@@ -1,8 +1,7 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="container my-5 px-5"
-         style="min-height:100vh; padding-top: 70px;">
+    <div class="container my-5 px-5">
       <div class="my-5">
         <div class="row">
           <div class="col-md-6"

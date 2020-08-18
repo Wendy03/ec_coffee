@@ -1,7 +1,7 @@
 <template>
-  <div class="col-md-12 my-5">
+  <div class="my-5">
     <div class="row">
-      <div class="col-md-2 col-sm-6 mb-3 mb-4"
+      <div class="col-lg-2 col-md-6 col-6 mb-4"
            v-for="item in related"
            :key="item.id">
         <div class="card border-0 shadow-sm h-100">

@@ -4,7 +4,7 @@
                 background-size: cover;
                 background-position: center;
                 background-image: url('https://images.unsplash.com/photo-1504888527749-e68244b4d3d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80')">
-    <div class="col-md-6 row mt-5 ml-3"
+    <div class="col-lg-6 row mt-5 ml-3"
          style="opacity:0.8;">
       <div class="card card-body mt-5">
         <h2 class="font-weight-bold">Coffee</h2>

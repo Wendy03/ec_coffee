@@ -1,12 +1,11 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="container my-5"
-         style="min-height:100vh; padding-top: 70px;">
-      <div class="d-flex justify-content-center"
+    <div class="container">
+      <div class="row justify-content-center"
            v-if="carts.length > 0">
-        <div class="col-md-6 bg-white py-5"
-             style="min-height: calc(100vh - 70px);">
+        <div class="col-lg-6 col-md-8 bg-white py-5"
+             style="min-height: calc(100vh - 56px - 76px);">
           <div class="d-flex justify-content-between mb-5">
             <h2 class="mt-2 text-brown font-weight-bold">購物車</h2>
             <a href="#"
@@ -36,28 +35,27 @@
                   {{ item.product.content }}
                 </p>
                 <div class="d-flex justify-content-between align-items-center w-100">
-                  <div class="input-group w-50 align-items-center mt-3">
-                    <div class="input-group">
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-brown btn-sm border-0"
-                                @click.prevent="quantityUpdate(item.product.id, item.quantity - 1)"
-                                :disabled="item.quantity === 1">
-                          <i class="fas fa-minus"></i>
-                        </button>
-                      </div>
-                      <input id="quantity"
-                             type="number"
-                             class="form-control text-center border-0"
-                             :value="item.quantity"
-                             @change="quantityUpdate(item.product.id, $event.target.value)"
-                             disabled />
-                      <div class="input-group-prepend">
-                        <button class="btn btn-outline-brown btn-sm border-0"
-                                @click.prevent="quantityUpdate(item.product.id, item.quantity + 1)"
-                                :disabled="item.quantity === 5">
-                          <i class="fas fa-plus"></i>
-                        </button>
-                      </div>
+                  <div class="input-group w-50 align-items-center">
+                    <div class="input-group-append pr-1">
+                      <button class="btn btn-outline-brown btn-sm border-0"
+                              @click.prevent="quantityUpdate(item.product.id, item.quantity - 1)"
+                              :disabled="item.quantity === 1">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </div>
+                    <input id="quantity"
+                           type="number"
+                           class="form-control border-0
+                             text-center my-auto shadow-none bg-light px-0"
+                           :value="item.quantity"
+                           @change="quantityUpdate(item.product.id, $event.target.value)"
+                           disabled />
+                    <div class="input-group-prepend">
+                      <button class="btn btn-outline-brown btn-sm border-0"
+                              @click.prevent="quantityUpdate(item.product.id, item.quantity + 1)"
+                              :disabled="item.quantity === 5">
+                        <i class="fas fa-plus"></i>
+                      </button>
                     </div>
                   </div>
                   <p class="mb-0 ml-auto">

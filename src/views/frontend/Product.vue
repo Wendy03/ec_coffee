@@ -1,8 +1,7 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="container my-5 col-lg-10"
-         style="min-height:100vh; padding-top: 50px;"
+    <div class="container col-lg-10 mt-3"
          v-if="product.imageUrl[0]">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-white">
@@ -24,43 +23,39 @@
                style="height: 350px; object-fit: cover;">
         </div>
         <div class="col-lg-6">
-          <div class="card border-0">
-            <div class="card-body">
-              <h2 class="card-title font-weight-bold text-brown">
-                {{ product.title }}
-              </h2>
-              <p class="ml-4">{{ product.content }}</p>
-              <p class="card-text mt-5">
-                【 商品說明 】<br />
-              </p>
-              <p v-html="product.description"></p>
-              <div class="d-flex flex-column align-items-end mb-3">
-                <p class="mb-0 h4 font-weight-bold">
-                  {{ product.price | money }} / {{ product.unit }}
-                </p>
-              </div>
-              <div class="d-flex">
-                <div class="w-50 mr-3">
-                  <select name="unit"
-                          class="form-control mr-3 rounded-0"
-                          v-model="product.num">
-                    <option :value="num"
-                            v-for="num in 5"
-                            :key="num">
-                      {{ num }} {{ product.unit }}
-                    </option>
-                  </select>
-                </div>
-                <button type="button"
-                        class="btn btn-brown w-50 rounded-0"
-                        @click.prevent="addToCart(product, product.num)"
-                        :disabled="isProcessing">
-                  <i class="fas fa-spinner fa-spin"
-                     v-if="product.id === status.loadingItem"></i>
-                  加到購物車
-                </button>
-              </div>
+          <h2 class="font-weight-bold text-brown">
+            {{ product.title }}
+          </h2>
+          <p>{{ product.content }}</p>
+          <p class="mt-5">
+            【 商品說明 】<br />
+          </p>
+          <p v-html="product.description"></p>
+          <div class="d-flex flex-column align-items-end mb-3">
+            <p class="mb-0 h5 font-weight-bold text-right">
+              {{ product.price | money }} / {{ product.unit }}
+            </p>
+          </div>
+          <div class="d-flex">
+            <div class="w-50 mr-3">
+              <select name="unit"
+                      class="form-control mr-3 rounded-0"
+                      v-model="product.num">
+                <option :value="num"
+                        v-for="num in 5"
+                        :key="num">
+                  {{ num }} {{ product.unit }}
+                </option>
+              </select>
             </div>
+            <button type="button"
+                    class="btn btn-brown w-50 rounded-0"
+                    @click.prevent="addToCart(product, product.num)"
+                    :disabled="isProcessing">
+              <i class="fas fa-spinner fa-spin"
+                 v-if="product.id === status.loadingItem"></i>
+              加到購物車
+            </button>
           </div>
         </div>
       </div>
@@ -70,24 +65,8 @@
                       @update="getProduct" />
       <hr>
       <div class="mt-4">
-        <h5 class="mb-3 font-weight-bold">參考</h5>
-        <p class="ml-4">有任何問題可以參考以下資訊：</p>
-        <div>
-          <ul class="d-flex list-unstyled mb-0 ml-5">
-            <li class="mr-5">
-              <router-link to="/class"
-                           class="text-brown">
-                咖啡小教室
-              </router-link>
-            </li>
-            <li>
-              <router-link to="/question"
-                           class="text-brown">
-                常見問題
-              </router-link>
-            </li>
-          </ul>
-        </div>
+        <h5 class="mb-3 font-weight-bold">常見問題</h5>
+        <Imformation />
       </div>
     </div>
   </div>
@@ -96,6 +75,7 @@
 <script>
 import Toast from '@/utils/Toast';
 import RelatePorducts from '@/components/frontend/RelatedProducts.vue';
+import Imformation from '@/components/frontend/Information.vue';
 
 export default {
   data() {
@@ -113,6 +93,7 @@ export default {
   },
   components: {
     RelatePorducts,
+    Imformation,
   },
   created() {
     this.getProduct();

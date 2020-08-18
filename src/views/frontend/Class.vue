@@ -8,8 +8,7 @@
           <div class="col-lg-4">
             <img src="https://images.unsplash.com/photo-1514927298007-a2b56e5270e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80"
                  alt=""
-                 class="w-100"
-                 style="height: 150px; object-fit: cover;">
+                 class="w-100">
           </div>
           <div class="col-lg-6 mt-3">
             <h4>新鮮度判斷</h4>
@@ -26,8 +25,7 @@
           <div class="col-lg-4">
             <img src="https://images.unsplash.com/44/E5KMvPp9SsCnqmEGUwAS_2014-08-10%2012.56.40%201.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=959&q=80"
                  alt=""
-                 class="w-100"
-                 style="height: 150px; object-fit: cover;">
+                 class="w-100">
           </div>
           <div class="col-lg-6 mt-3">
             <h4>咖啡豆保存</h4>
@@ -44,8 +42,7 @@
           <div class="col-lg-4">
             <img src="https://images.unsplash.com/photo-1514927298007-a2b56e5270e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80"
                  alt=""
-                 class="w-100"
-                 style="height: 150px; object-fit: cover;">
+                 class="w-100">
           </div>
           <div class="col-lg-6 mt-3">
             <h4>手沖咖啡</h4>

@@ -1,11 +1,12 @@
 <template>
-  <div class="container-fluid"
-       style="min-height:100vh; padding-top: 50px;">
+  <div class="container">
     <Banner />
     <hr>
     <HomeCategory />
     <hr>
     <AboutCard />
+    <hr>
+    <Select />
   </div>
 </template>
 
@@ -13,6 +14,7 @@
 import Banner from '@/components/frontend/Banner.vue';
 import HomeCategory from '@/components/frontend/HomeCategory.vue';
 import AboutCard from '@/components/frontend/AboutCard.vue';
+import Select from '@/components/frontend/Select.vue';
 
 export default {
   data() {
@@ -22,6 +24,7 @@ export default {
     Banner,
     HomeCategory,
     AboutCard,
+    Select,
   },
 };
 </script>

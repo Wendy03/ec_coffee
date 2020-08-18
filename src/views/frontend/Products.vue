@@ -1,9 +1,8 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="container"
-         style="min-height:100vh;">
-      <div class="row mt-5"
+    <div class="container">
+      <div class="row mt-3"
            v-if="products.length > 0">
         <div class="col-lg-2 col-md-3 mb-2 my-5">
           <ul class="list-group sticky-top rounded-0">
@@ -43,9 +42,11 @@
                   <span class="badge badge-secondary float-right ml-2">
                     {{ item.category }}
                   </span>
-                  <h5 class="card-title font-weight-bold text-brown">
-                    {{ item.title }}
-                  </h5>
+                  <router-link :to="`/product/${ item.id }`">
+                    <h5 class="card-title font-weight-bold text-brown">
+                      {{ item.title }}
+                    </h5>
+                  </router-link>
                   <p class="card-text">{{ item.content }}</p>
                   <div class="text-right pr-2 h6">
                     {{ item.price | money }} 元
@@ -56,11 +57,12 @@
                           class="btn btn-outline-brown btn-block rounded-0"
                           @click.prevent="addToCart(item.id)"
                           :disabled="isProcessing">
-                    <i class="fa fa-cart-plus"
-                       aria-hidden="true"></i>
                     <i class="fas fa-spinner fa-spin"
                        v-if="status.loadingItem === item.id">
                     </i>
+                    <i v-else
+                       class="fa fa-cart-plus"
+                       aria-hidden="true"></i>
                     加到購物車
                   </button>
                 </div>
@@ -173,7 +175,7 @@ export default {
   }
 
   .card {
-    box-shadow: 2px 2px 5px rgb(100, 100, 100);
+    box-shadow: 2px 2px 5px rgba(100, 100, 100, 0.16);
   }
 
   .card-footer {

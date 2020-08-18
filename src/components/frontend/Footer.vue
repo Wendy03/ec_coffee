@@ -1,14 +1,20 @@
 <template>
-  <footer class="container-fluid bg-tan">
-    <div class="d-flex align-items-center justify-content-around text-white py-2">
-      <p>無商業用途，僅供學習使用</p>
-      <router-link to="/admin/products"
-                   class="nav-link text-light">
-        <i class="fas fa-user-cog"></i>
-        商品管理
-      </router-link>
+  <div class="bg-tan">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between text-white py-3">
+        <p class="mb-0">無商業用途，僅供學習使用</p>
+        <ul class="d-flex list-unstyled mb-0">
+          <li>
+            <router-link to="/about"
+                         class="nav-link text-white mr-2">
+              關於我們
+            </router-link>
+          </li>
+
+        </ul>
+      </div>
     </div>
-  </footer>
+  </div>
 </template>
 
 <script>

@@ -1,12 +1,11 @@
 <template>
-  <div class="container my-5"
-       style="min-height:100vh; padding-top: 70px;">
+  <div class="container mt-2 mb-4">
     <AboutCard />
     <hr>
     <div class="my-7">
       <h3 class="text-center mb-5 font-weight-bold">核心價值</h3>
       <div class="row">
-        <div class="col-md-4 my-4">
+        <div class="col-lg-4 my-4">
           <div class="card border-0 mb-4 position-relative position-relative">
             <img src="https://images.pexels.com/photos/3421647/pexels-photo-3421647.jpeg?cs=srgb&dl=pexels-gvphotodesign-3421647.jpg&fm=jpg"
                  alt=""
@@ -26,7 +25,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 my-4">
+        <div class="col-lg-4 my-4">
           <div class="card border-0 mb-4 position-relative position-relative">
             <img src="https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                  alt=""
@@ -45,7 +44,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 my-4">
+        <div class="col-lg-4 my-4">
           <div class="card border-0 mb-4 position-relative position-relative">
             <img src="https://images.pexels.com/photos/1459339/pexels-photo-1459339.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                  alt=""
