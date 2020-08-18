@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="col-lg-4 my-4">
-        <div class="card border-0 mb-4 position-relative position-relative">
+        <div class="card border-0 mb-4 position-relative">
           <a href="#"
              @click.prevent="toCategory('周邊商品')">
             <img src="https://images.unsplash.com/photo-1523063308874-cecc260a3171?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
