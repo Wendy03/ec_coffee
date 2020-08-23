@@ -172,7 +172,7 @@ export default {
       } else {
         this.followed.splice(followId, 1);
         Toast.fire({
-          title: '已加入取消追蹤',
+          title: '已取消追蹤',
           icon: 'success',
         });
       }
