@@ -7,9 +7,14 @@
       <div class="row">
         <div class="col-lg-4 my-4">
           <div class="card border-0 mb-4 position-relative position-relative">
-            <img src="https://images.pexels.com/photos/3421647/pexels-photo-3421647.jpeg?cs=srgb&dl=pexels-gvphotodesign-3421647.jpg&fm=jpg"
-                 alt=""
-                 style="width: 300px; height: 200px; object-fit: cover;">
+            <div style="
+                    height: 300px;
+                    background-size: cover;
+                    background-position: center;
+                    background-image:url('https://images.pexels.com/photos/3421647/pexels-photo-3421647.jpeg?cs=srgb&dl=pexels-gvphotodesign-3421647.jpg&fm=jpg')
+                  "
+                 class="rounded-0">
+            </div>
             <div class="card-body p-0">
               <h4 class="card-title font-weight-bold">品質</h4>
               <h6 class="card-subtitle mb-2 text-muted">
@@ -27,9 +32,14 @@
         </div>
         <div class="col-lg-4 my-4">
           <div class="card border-0 mb-4 position-relative position-relative">
-            <img src="https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                 alt=""
-                 style="width: 300px; height: 200px; object-fit: cover;">
+            <div style="
+                    height: 300px;
+                    background-size: cover;
+                    background-position: center;
+                    background-image:url('https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')
+                  "
+                 class="rounded-0">
+            </div>
             <div class="card-body p-0">
               <h4 class="card-title font-weight-bold">新鮮</h4>
               <h6 class="card-subtitle mb-2 text-muted">
@@ -46,9 +56,14 @@
         </div>
         <div class="col-lg-4 my-4">
           <div class="card border-0 mb-4 position-relative position-relative">
-            <img src="https://images.pexels.com/photos/1459339/pexels-photo-1459339.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                 alt=""
-                 style="width: 300px; height: 200px; object-fit: cover;">
+            <div style="
+                    height: 300px;
+                    background-size: cover;
+                    background-position: center;
+                    background-image:url('https://images.pexels.com/photos/1459339/pexels-photo-1459339.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')
+                  "
+                 class="rounded-0">
+            </div>
             <div class="card-body p-0">
               <h4 class="card-title font-weight-bold">道德採購</h4>
               <h6 class="card-subtitle mb-2 text-muted">
@@ -66,7 +81,7 @@
     </div>
     <hr>
     <div class=" my-7">
-      <h3 class="text-center font-weight-bold" >聯絡我們</h3>
+      <h3 class="text-center font-weight-bold">聯絡我們</h3>
       <p class="text-center mt-5">電話: 03-1234567</p>
       <p class="text-center mt-2">地址: 順著咖啡香就可以找到我們</p>
     </div>
