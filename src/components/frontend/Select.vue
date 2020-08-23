@@ -27,6 +27,20 @@
         <p>來自哥倫比亞娜玲瓏（Narino）產區，海拔2,100公尺，聞得到稀有的花香味，入口時散發出熱帶水果與可可交織的濃郁口感，還帶有一點柑橘香</p>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-6">
+        <img src="https://images.unsplash.com/photo-1525088553748-01d6e210e00b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1055&q=80"
+             alt=""
+             class="img-fluid">
+      </div>
+      <div class="col-md-4 m-auto text-center">
+        <router-link to="/product/xJeYeX1ATyxDL9IRkKZHzta0Fyj0v8dsPZrsIF2jjkGWQK1l9eREBrXSLHEGFxXZ">
+          <h4 class="mt-4 text-brown font-weight-bold">夏威夷可娜</h4>
+        </router-link>
+        <p>獅門莊園Lion Gates Farms，以養分豐富的火山土壤及陽光、雨量、
+          溫度皆適宜的夏威夷天氣下，所栽培出的精品可娜。</p>
+      </div>
+    </div>
   </div>
 </template>
 

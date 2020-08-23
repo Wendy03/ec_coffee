@@ -88,7 +88,8 @@ $theme-colors: map-merge(
     "light":      $light,
     "dark":       $dark,
     "brown":    #6b5139,
-    "tan": #7e634af8
+    "tan": #7e634af8,
+    "heart": #ff2f2f
   ),
   $theme-colors
 );
@@ -163,6 +164,7 @@ $sizes: map-merge(
     25: 25%,
     50: 50%,
     75: 75%,
+    80: 80%,
     100: 100%,
     auto: auto
   ),

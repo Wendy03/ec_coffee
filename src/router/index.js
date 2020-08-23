@@ -33,6 +33,16 @@ const routes = [
         component: () => import('../views/frontend/Class.vue'),
       },
       {
+        path: 'information',
+        name: 'information',
+        component: () => import('../views/frontend/Information.vue'),
+      },
+      {
+        path: 'track',
+        name: 'track',
+        component: () => import('../views/frontend/Track.vue'),
+      },
+      {
         path: 'cart',
         name: 'cart',
         component: () => import('../views/frontend/Cart.vue'),

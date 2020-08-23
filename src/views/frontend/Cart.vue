@@ -4,8 +4,7 @@
     <div class="container">
       <div class="row justify-content-center"
            v-if="carts.length > 0">
-        <div class="col-lg-6 col-md-8 bg-white py-5"
-             style="min-height: calc(100vh - 56px - 76px);">
+        <div class="ec-container col-md-6 bg-white py-5">
           <div class="d-flex justify-content-between mb-5">
             <h2 class="mt-2 text-brown font-weight-bold">購物車</h2>
             <a href="#"
@@ -19,7 +18,7 @@
             <div class="d-flex mt-4 bg-light">
               <img :src="item.product.imageUrl[0]"
                    alt=""
-                   style="width: 130px; height: 130px; object-fit: cover;">
+                   style="width: 120px; height: 120px; object-fit: cover;">
               <div class="w-100 p-3 position-relative">
                 <a href="#"
                    @click.prevent="removeCartItem(item.product.id)"
@@ -34,7 +33,7 @@
                    style="font-size: 14px;">
                   {{ item.product.content }}
                 </p>
-                <div class="d-flex justify-content-between align-items-center w-100">
+                <div class="d-flex justify-content-between align-items-center w-100 mt-3">
                   <div class="input-group w-50 align-items-center">
                     <div class="input-group-append pr-1">
                       <button class="btn btn-outline-brown btn-sm border-0"
@@ -58,8 +57,8 @@
                       </button>
                     </div>
                   </div>
-                  <p class="mb-0 ml-auto">
-                    {{ item.product.price | money }} / {{ item.product.unit }}
+                  <p class="mb-0 ml-auto info-text">
+                    {{ item.product.price | money }}/{{ item.product.unit }}
                   </p>
                 </div>
               </div>
@@ -74,8 +73,7 @@
             </div>
 
           </div>
-          <div class="d-flex flex-column-reverse
-                flex-md-row flex-sm-row mt-4 justify-content-between
+          <div class="d-flex mt-4 justify-content-between
                 align-items-md-center align-items-end w-100">
             <router-link to="/products"
                          class="text-dark mt-5 h5">
@@ -91,9 +89,9 @@
       </div>
       <div v-else>
         <div class="d-flex justify-content-center my-7">
-          <h4 class="mb-3">購物車無商品，回到商城選購</h4>
+          <h4 class="mb-3 warning-text">購物車無商品，快去逛逛</h4>
           <router-link to="/products"
-                       class="text-dark mt-5 mt-3 h5">
+                       class="text-dark mt-5 mt-3">
             <i class="fas fa-chevron-left mr-2"></i>
             繼續購物
           </router-link>
@@ -224,3 +222,19 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .ec-container {
+    min-height: calc(100vh - 56px - 76px);
+  }
+
+   @media (max-width: 325px) {
+    .warning-text {
+      font-size: 1.1rem;
+    }
+
+    .info-text{
+      font-size: 0.8rem;
+    }
+  }
+</style>

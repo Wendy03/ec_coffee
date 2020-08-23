@@ -1,12 +1,18 @@
 <template>
   <div class="my-5">
-    <div class="row">
-      <div class="col-lg-2 col-md-6 col-6 mb-4"
+    <carousel :margin="20"
+              :nav="false"
+              :autoplay="true"
+              v-if="products.length > 0"
+              :responsive="{ 0:{ items:1,nav:false },
+                  600:{ items:3,nav:false },
+                  1000:{ items:4,nav:false, } }">
+      <div class="item"
            v-for="item in related"
            :key="item.id">
-        <div class="card border-0 shadow-sm h-100">
+        <div class="card h-100">
           <div style="
-                    height: 150px;
+                    min-height: 200px;
                     background-size: cover;
                     background-position: center;
                     cursor: pointer
@@ -15,22 +21,22 @@
                @click.prevent="getDetail(item.id)">
           </div>
           <div class="card-body">
-            <h5 class="card-title">
+            <h6 class="card-title">
               {{ item.title }}
-            </h5>
-            <p class="card-text">{{ item.content }}</p>
+            </h6>
             <div class="text-right pr-2">
               {{ item.price | money }} 元
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </carousel>
   </div>
 </template>
 
 <script>
 import Toast from '@/utils/Toast';
+import carousel from 'vue-owl-carousel';
 
 export default {
   data() {
@@ -42,6 +48,9 @@ export default {
     product: {
       type: Object,
     },
+  },
+  components: {
+    carousel,
   },
   created() {
     this.getProducts();

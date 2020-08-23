@@ -1,11 +1,11 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="container mt-2"
+    <div class="container ec-container mt-2"
          v-if="carts.length > 0">
       <div class="row justify-content-center flex-lg-row flex-column-reverse">
         <div class="col-lg-6">
-          <div class="bg-white p-4">
+          <div class="bg-white px-3 pt-4">
             <h3 class="text-brown font-weight-bold">客戶資訊</h3>
             <validation-observer v-slot="{ invalid }"
                                  class="col-md-6">
@@ -14,6 +14,7 @@
                 <div class="form-group">
                   <validation-provider rules="required|email"
                                        v-slot="{ errors, classes, passed }">
+                    <span class="text-danger">*</span>
                     <label for="email">Email</label>
                     <input id="email"
                            type="email"
@@ -31,6 +32,7 @@
                 <div class="form-group">
                   <validation-provider rules="required"
                                        v-slot="{ errors, classes, passed }">
+                    <span class="text-danger">*</span>
                     <label for="username">收件人姓名</label>
                     <input id="username"
                            type="text"
@@ -48,6 +50,7 @@
                 <div class="form-group">
                   <validation-provider rules="required|min:8"
                                        v-slot="{ errors, classes, passed }">
+                    <span class="text-danger">*</span>
                     <label for="tel">收件人電話</label>
                     <input id="tel"
                            type="tel"
@@ -64,6 +67,7 @@
                 <div class="form-group">
                   <validation-provider rules="required"
                                        v-slot="{ errors, classes, passed }">
+                    <span class="text-danger">*</span>
                     <label for="address">收件人地址</label>
                     <input id="address"
                            type="text"
@@ -121,8 +125,7 @@
                             rows="7"
                             v-model.trim="form.message"></textarea>
                 </div>
-                <div class="d-flex flex-column-reverse
-                flex-md-row mt-4 justify-content-between
+                <div class="d-flex mt-4 justify-content-between
                 align-items-md-center align-items-end w-100">
                   <router-link to="/cart"
                                class="text-dark mt-md-0 mt-3 h5">
@@ -142,7 +145,7 @@
             </validation-observer>
           </div>
         </div>
-        <div class="col-lg-4 mb-5">
+        <div class="col-lg-4">
           <div class="border p-5 mx-2 mb-4 order-card">
             <h4 class="mb-4 text-brown font-weight-bold">訂單明細</h4>
             <div v-for="item in carts"
@@ -331,6 +334,10 @@ export default {
 </script>
 
 <style>
+ .ec-container {
+    min-height: calc(100vh - 56px - 76px);
+  }
+
   .form-control::placeholder {
     color: #aaaaaa;
     font-size: 0.87rem;
@@ -343,7 +350,6 @@ export default {
 
   @media screen and (min-width: 769px) {
     .order-card {
-      position: -webkit-sticky; /* Safari */
       position: sticky;
       top: 85px;
     }

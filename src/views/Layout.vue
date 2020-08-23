@@ -2,7 +2,8 @@
   <div class="layout">
     <Navbar />
     <router-view></router-view>
-    <router-link to="/cart" class="cart pl-3 pr-1 pt-4 pb-3">
+    <router-link to="/cart"
+                 class="cart pl-3 pr-1 pt-4 pb-3">
       <CartIcon />
     </router-link>
     <Footer />
