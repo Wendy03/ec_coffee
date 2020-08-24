@@ -40,5 +40,6 @@ export default {
     -ms-transition: 0.4s linear;
     -o-transition: 0.4s linear;
     transition: 0.4s linear;
+    z-index: 3;
   }
 </style>

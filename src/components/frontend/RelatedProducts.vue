@@ -1,15 +1,10 @@
 <template>
-  <div class="my-5">
-    <carousel :margin="20"
-              :nav="false"
-              :autoplay="true"
-              v-if="products.length > 0"
-              :responsive="{ 0:{ items:1,nav:false },
-                  600:{ items:3,nav:false },
-                  1000:{ items:4,nav:false, } }">
-      <div class="item"
-           v-for="item in related"
-           :key="item.id">
+  <div class="my-5"
+       v-if="products.length > 0">
+    <swiper :options="swiperOption">
+      <swiper-slide class="item mb-5"
+                    v-for="item in related"
+                    :key="item.id">
         <div class="card h-100">
           <div style="
                     min-height: 200px;
@@ -29,19 +24,41 @@
             </div>
           </div>
         </div>
-      </div>
-    </carousel>
+      </swiper-slide>
+      <div class="swiper-pagination"
+           slot="pagination"></div>
+    </swiper>
   </div>
 </template>
 
 <script>
 import Toast from '@/utils/Toast';
-import carousel from 'vue-owl-carousel';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import 'swiper/css/swiper.css';
 
 export default {
   data() {
     return {
       products: [],
+      swiperOption: {
+        speed: 900,
+        allowTouchMove: true,
+        pagination: {
+          el: '.swiper-pagination',
+          dynamicBullets: true,
+          clickable: true,
+        },
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+          },
+        },
+      },
     };
   },
   props: {
@@ -50,7 +67,8 @@ export default {
     },
   },
   components: {
-    carousel,
+    Swiper,
+    SwiperSlide,
   },
   created() {
     this.getProducts();
