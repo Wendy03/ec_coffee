@@ -61,9 +61,10 @@
             查看商品
           </router-link>
         </div>
-        <div class="mt-7">
-          <HomeCategory />
-        </div>
+
+      </div>
+      <div class="mt-7">
+        <HomeCategory />
       </div>
     </div>
   </div>

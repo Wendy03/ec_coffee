@@ -4,7 +4,7 @@
                 background-size: cover;
                 background-position: center;
                 background-image: url('https://images.unsplash.com/photo-1504888527749-e68244b4d3d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80')">
-    <div class="row mt-5 pl-4"
+    <div class="row mt-5 banner-card"
          style="opacity:0.8;">
       <div class="col-lg-6">
         <div class="card card-body mt-5">
@@ -70,3 +70,11 @@ export default {
   },
 };
 </script>
+
+<style>
+  @media screen and (min-width: 769px) {
+    .banner-card {
+      padding-left: 40px;
+    }
+  }
+</style>

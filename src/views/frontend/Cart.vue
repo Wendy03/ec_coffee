@@ -16,9 +16,14 @@
           <div v-for="item in carts"
                :key="item.product.id + 1">
             <div class="d-flex mt-4 bg-light">
-              <img :src="item.product.imageUrl[0]"
-                   alt=""
-                   style="width: 120px; height: 120px; object-fit: cover;">
+              <div style="
+                    width: 130px;
+                    background-size: cover;
+                    background-position: center;
+                  "
+                   class="rounded-0"
+                   :style="{ backgroundImage: `url(${ item.product.imageUrl[0] })` }">
+              </div>
               <div class="w-100 p-3 position-relative">
                 <a href="#"
                    @click.prevent="removeCartItem(item.product.id)"
@@ -96,9 +101,9 @@
             繼續購物
           </router-link>
         </div>
-        <div class="mt-7">
-          <HomeCategory />
-        </div>
+      </div>
+      <div class="mt-7">
+        <HomeCategory />
       </div>
     </div>
   </div>
@@ -228,12 +233,12 @@ export default {
     min-height: calc(100vh - 56px - 76px);
   }
 
-   @media (max-width: 325px) {
+  @media (max-width: 325px) {
     .warning-text {
       font-size: 1.1rem;
     }
 
-    .info-text{
+    .info-text {
       font-size: 0.8rem;
     }
   }
