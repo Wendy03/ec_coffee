@@ -1,0 +1,1 @@
+@media (max-width:768px){.nav-link.active{background-color:#bd9c72}}@media screen and (min-width:769px){.nav-link.active{border-bottom:3px solid#FFFFFF}}.cart{position:fixed;right:1%;bottom:10%;border-radius:50%;background-color:rgba(107,81,57,.69);cursor:pointer;transition:.4s linear;z-index:3}

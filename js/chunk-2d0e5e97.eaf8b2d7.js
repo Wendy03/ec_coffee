@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0e5e97"],{9703:function(t,n,e){"use strict";e.r(n);var a=function(){var t=this,n=t.$createElement,e=t._self._c||n;return e("div",{staticClass:"container m-5"},[e("h1",{staticClass:"mb-5"},[t._v(" 404 Page Not Found ")]),e("router-link",{attrs:{to:"/signin"}},[t._v("回到首頁")])],1)},s=[],i={data:function(){return{}}},r=i,u=e("2877"),c=Object(u["a"])(r,a,s,!1,null,null,null);n["default"]=c.exports}}]);
+//# sourceMappingURL=chunk-2d0e5e97.eaf8b2d7.js.map
